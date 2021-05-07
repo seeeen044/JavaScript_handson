@@ -9,14 +9,14 @@
   </head>
   <body>
     <div>
-      <ul></ul>
+      <ul id="js_list"></ul>
     </div>
 
     <script>
-      let ul = document.querySelector('ul');
-      //IDがないのでquerySelectorを使用して要素を検索
+      const js_list = document.getElementById('js_list');
+      //取得したい要素が決まっているのでHTMLにIDを付与しgetElementByIdで取得
 
-      ul.innerHTML = '<li>これです</li>';
+      js_list.innerHTML = '<li>これです</li>';
       //innerHTMLで要素を追加する 
 
     </script>
