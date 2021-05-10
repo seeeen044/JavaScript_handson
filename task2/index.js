@@ -8,9 +8,9 @@ const img = document.createElement("img");
 
 //domに属性を追加
 a.textContent = "これです";
-a.setAttribute("src","1.html");
-img.setAttribute("src","bookmark.png");
-img.setAttribute("alt","ブックマーク");
+a.href = "1.html";
+img.src = "bookmark.png";
+img.alt = "ブックマーク";
 
 //domに追加
 ul.appendChild(li).appendChild(a).prepend(img);
