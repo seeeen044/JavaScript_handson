@@ -13,4 +13,7 @@ img.src = "bookmark.png";
 img.alt = "ブックマーク";
 
 //domに追加
-ul.appendChild(li).appendChild(a).prepend(img);
+ul.appendChild(li).appendChild(a).insertBefore(img, a.firstChild);
+
+// この書き方はprependがIE非対称なので上記書き方の方が推奨
+// ul.appendChild(li).appendChild(a).prepend(img);
