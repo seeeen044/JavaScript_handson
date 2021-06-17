@@ -10,16 +10,16 @@ const getData = new Promise((resolve) => {
     resolve(obj);
 });
 
-getData.then(() => {
-    obj.forEach((value) => {
+getData.then((value) => {
+    obj.forEach((item) => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         const img = document.createElement('img');
 
-        a.textContent = value.text;
-        a.href = value.to;
-        img.src = value.img;
-        img.alt = value.alt;
+        a.textContent = item.text;
+        a.href = item.to;
+        img.src = item.img;
+        img.alt = item.alt;
 
         fragment.appendChild(li).appendChild(a).insertBefore(img, a.firstChild);
     }) 
