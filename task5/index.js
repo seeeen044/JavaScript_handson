@@ -11,7 +11,7 @@ const getData = new Promise((resolve) => {
 });
 
 getData.then((value) => {
-    obj.forEach((item) => {
+    value.forEach((item) => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         const img = document.createElement('img');
