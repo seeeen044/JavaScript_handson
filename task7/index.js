@@ -1,17 +1,22 @@
+const obj = [
+    {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"}, 
+    {to: "message.html", img: "2.png", alt:"画像2", text: "メッセージ"}
+]
+
 const div = document.getElementById("js-loading");
 const gif = document.createElement('img');
-gif.src = "loading-circle.gif";
 div.appendChild(gif);
+const loading = () => {
+    gif.src = "loading-circle.gif";
+};
 
 const getData = new Promise((resolve) => {
-    const obj = [
-        {to: "bookmark.html", img: "1.png", alt:"画像1", text: "ブックマーク"}, 
-        {to: "message.html", img: "2.png", alt:"画像2", text: "メッセージ"}
-    ]
+    loading();
+
     setTimeout(() => {
         resolve(obj);
         gif.remove();
-    }, 2000);
+    },2000);
 });
 
 getData.then((value) => {
