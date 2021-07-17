@@ -3,24 +3,29 @@ const obj = [
     {to: "message.html", img: "2.png", alt:"画像2", text: "メッセージ"}
 ]
 
-const div = document.getElementById("js-loading");
-const gif = document.createElement('img');
-div.appendChild(gif);
-const loading = () => {
-    gif.src = "loading-circle.gif";
-};
+const div = document.getElementById("js-parent");
 
+const loadingPlace = document.createElement("div");
+div.appendChild(loadingPlace);
+
+const loading = () => {
+    const gif = document.createElement('img');
+    gif.src = "loading-circle.gif";
+    loadingPlace.appendChild(gif);
+};
+    
 const getData = new Promise((resolve) => {
     loading();
-
+    
     setTimeout(() => {
         resolve(obj);
-        gif.remove();
     },2000);
 });
 
 getData.then((value) => {
-    const ul = document.getElementById("js-ul");
+    loadingPlace.remove();
+
+    const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
 
     value.forEach(item => {
@@ -35,5 +40,5 @@ getData.then((value) => {
 
         fragment.appendChild(li).appendChild(a).appendChild(img);
     })
-    ul.appendChild(fragment);
+    div.appendChild(ul).appendChild(fragment);
 });
