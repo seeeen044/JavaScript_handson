@@ -20,12 +20,13 @@ const getData = new Promise((resolve) => {
     },2000);
 });
 
-getData.then(() => {
+const loaded = () => {
     const loadingPlace = document.getElementById("loadingPlace");
     loadingPlace.remove();
-});
+};
 
 getData.then((value) => {
+    loaded();
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
 
