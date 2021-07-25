@@ -5,26 +5,27 @@ const obj = [
 
 const div = document.getElementById("js-parent");
 
-const loadingPlace = document.createElement("div");
-div.appendChild(loadingPlace);
-
 const loading = () => {
+    const loadingPlace = document.createElement("div");
     const gif = document.createElement('img');
+    loadingPlace.id = "loadingPlace";
     gif.src = "loading-circle.gif";
-    loadingPlace.appendChild(gif);
+    div.appendChild(loadingPlace).appendChild(gif);
 };
     
 const getData = new Promise((resolve) => {
     loading();
-    
     setTimeout(() => {
         resolve(obj);
     },2000);
 });
 
-getData.then((value) => {
+getData.then(() => {
+    document.getElementById("loadingPlace");
     loadingPlace.remove();
+});
 
+getData.then((value) => {
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
 
