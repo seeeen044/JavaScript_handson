@@ -21,7 +21,7 @@ const getData = new Promise((resolve) => {
 });
 
 getData.then(() => {
-    document.getElementById("loadingPlace");
+    const loadingPlace = document.getElementById("loadingPlace");
     loadingPlace.remove();
 });
 
