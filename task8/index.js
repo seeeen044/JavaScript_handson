@@ -21,7 +21,7 @@ const loaded = () => {
 const getData  = new Promise((resolve, reject) => {
     loading();
         setTimeout(() => {
-        reject(obj);
+        reject("error!");
     },3000);
 });
 
@@ -44,6 +44,6 @@ getData.then((value) => {
     })
     div.appendChild(ul).appendChild(fragment);
 });
-getData.catch(() => {
-    console.log("error!");
+getData.catch((error) => {
+    console.error(error);
 });
