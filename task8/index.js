@@ -11,22 +11,20 @@ const loading = () => {
     loadingPlace.id = "loadingPlace";
     gif.src = "loading-circle.gif";
     div.appendChild(loadingPlace).appendChild(gif);
-};
+};loading();
 
-const loaded = () => {
-    const loadingPlace = document.getElementById("loadingPlace");
-    loadingPlace.remove();
+const removeLoading = () => {
+    document.getElementById("loadingPlace").remove();
 }
     
 const getData  = new Promise((resolve, reject) => {
-    loading();
-        setTimeout(() => {
+    setTimeout(() => {
         reject("error!");
     },3000);
 });
 
 getData.then((value) => {
-    loaded();
+    removeLoading();
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
 
