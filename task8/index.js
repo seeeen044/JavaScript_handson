@@ -14,7 +14,7 @@ const loading = () => {
 };
 
 const loaded = () => {
-    document.getElementById("loadingPlace");
+    const loadingPlace = document.getElementById("loadingPlace");
     loadingPlace.remove();
 }
     
