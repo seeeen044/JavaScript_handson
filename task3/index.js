@@ -1,15 +1,15 @@
 const ul = document.getElementById("js-ul");
 
 const fragment = document.createDocumentFragment();
-const length = 2;
-for(let i = 1; i <= length; i++){
+const src = ["/img/bookmark.png", "/img/message.png"];
+for(let i = 0; i < src.length; i++){
     const li = document.createElement('li');
     const a = document.createElement('a');
     const img = document.createElement('img');
 
-    a.textContent = `a${i}`;
-    a.href = `a${i}.html`;
-    img.src = "/img/bookmark.png";
+    a.textContent = `a${i+1}`;
+    a.href = `a${i+1}.html`;
+    img.src = src[i];
 
     fragment.appendChild(li).appendChild(a).insertBefore(img, a.firstChild);  
   }
