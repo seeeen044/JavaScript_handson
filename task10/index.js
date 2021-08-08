@@ -20,16 +20,33 @@ const getData = () => {
     
     return new Promise((resolve,reject) => {
         setTimeout(() => {
-            resolve(obj);
-            reject("error!");
+            if(obj) {
+                resolve(obj);
+
+            } else {
+                reject("error!");
+
+            }
         },2000);
     });    
 };
 
 const objShow = async () => {
     loading();
-    
+
     const value = await getData();
+
+    //【Question】 Can I use try-catch-finally in here?
+    // try {
+    //     getData();
+    // } catch (error) {
+    //     div.textContent = "データを読み込めませんでした";
+    //     console.error(error);
+    // }
+    // finally{
+    //     removeLoading();
+    // };
+
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
 
@@ -54,6 +71,7 @@ const exception = async () => {
     try {
         await getData();
     } catch (error) {
+        div.textContent = "データを読み込めませんでした";
         console.error(error);
     }
     finally{
