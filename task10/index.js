@@ -32,7 +32,7 @@ const getData = () => {
 };
 
 
-const sequence = async () => {
+const request = async () => {
     loading();
     try {
         const listData = await getData();
@@ -47,8 +47,7 @@ const sequence = async () => {
 };
 
 const objShow = async () => {
-    const value = await sequence();
-    getData(value);
+    const value = await request();
     
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
