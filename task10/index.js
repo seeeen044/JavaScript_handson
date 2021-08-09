@@ -31,22 +31,25 @@ const getData = () => {
     });    
 };
 
-const objShow = async () => {
+
+const sequence = async () => {
     loading();
+    try {
+        const listData = await getData();
+        return listData;
+    } catch (error) {
+        div.textContent = "データを読み込めませんでした";
+        console.error(error);
+    }
+    finally{
+        removeLoading();
+    };
+};
 
-    const value = await getData();
-
-    //【Question】 Can I use try-catch-finally in here?
-    // try {
-    //     getData();
-    // } catch (error) {
-    //     div.textContent = "データを読み込めませんでした";
-    //     console.error(error);
-    // }
-    // finally{
-    //     removeLoading();
-    // };
-
+const objShow = async () => {
+    const value = await sequence();
+    getData(value);
+    
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
 
@@ -66,16 +69,3 @@ const objShow = async () => {
     
 };
 objShow();
-
-const exception = async () => {
-    try {
-        await getData();
-    } catch (error) {
-        div.textContent = "データを読み込めませんでした";
-        console.error(error);
-    }
-    finally{
-        removeLoading();
-    };
-};
-exception();
