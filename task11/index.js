@@ -29,8 +29,6 @@ const getData = async () => {
 };
 
 const objShow = async () => {
-    const value = await getData();
-
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
    
@@ -48,4 +46,9 @@ const objShow = async () => {
     })
     div.appendChild(ul).appendChild(fragment);  
 };
-objShow();
+
+const init = async () => {
+    const value = await getData();
+    objShow(value);
+};
+init();
