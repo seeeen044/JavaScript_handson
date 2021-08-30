@@ -28,7 +28,7 @@ const getData = async () => {
     };
 };
 
-const objShow = async () => {
+const objShow = (value) => {
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
    
