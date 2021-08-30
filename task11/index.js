@@ -1,11 +1,11 @@
-const div = document.getElementById("js-parent");
+const tryCreate = document.getElementById("js-parent");
 
 const loading = () => {
     const loadingPlace = document.createElement("div");
     const gif = document.createElement('img');
     loadingPlace.id = "loadingPlace";
     gif.src = "loading-circle.gif";
-    div.appendChild(loadingPlace).appendChild(gif);
+    tryCreate.appendChild(loadingPlace).appendChild(gif);
 };
 
 const removeLoading = () => {
@@ -20,7 +20,7 @@ const getData = async () => {
         return data;
         
     } catch (error) {
-        div.textContent = "データを読み込めませんでした";
+        tryCreate.textContent = "データを読み込めませんでした";
         console.error(error);
     }
     finally{
@@ -28,7 +28,7 @@ const getData = async () => {
     };
 };
 
-const objShow = (value) => {
+const createListData = (value) => {
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
    
@@ -44,11 +44,11 @@ const objShow = (value) => {
    
         fragment.appendChild(li).appendChild(a).appendChild(img);
     })
-    div.appendChild(ul).appendChild(fragment);  
+    tryCreate.appendChild(ul).appendChild(fragment);  
 };
 
 const init = async () => {
     const value = await getData();
-    objShow(value);
+    createListData(value);
 };
 init();
