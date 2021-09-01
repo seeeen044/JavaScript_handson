@@ -1,11 +1,11 @@
-const appendListForParent = document.getElementById("js-parent");
+const parent = document.getElementById("js-parent");
 
 const loading = () => {
     const loadingPlace = document.createElement("div");
     const gif = document.createElement('img');
     loadingPlace.id = "loadingPlace";
     gif.src = "loading-circle.gif";
-    appendListForParent.appendChild(loadingPlace).appendChild(gif);
+    parent.appendChild(loadingPlace).appendChild(gif);
 };
 
 const removeLoading = () => {
@@ -20,7 +20,7 @@ const getData = async () => {
         return data;
         
     } catch (error) {
-        appendListForParent.textContent = "データを読み込めませんでした";
+        parent.textContent = "データを読み込めませんでした";
         console.error(error);
     }
     finally{
@@ -28,7 +28,7 @@ const getData = async () => {
     };
 };
 
-const createListData = (value) => {
+const appendListForParent = (value) => {
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
    
@@ -44,11 +44,11 @@ const createListData = (value) => {
    
         fragment.appendChild(li).appendChild(a).appendChild(img);
     })
-    appendListForParent.appendChild(ul).appendChild(fragment);  
+    parent.appendChild(ul).appendChild(fragment);  
 };
 
 const init = async () => {
     const value = await getData();
-    createListData(value);
+    appendListForParent(value);
 };
 init();
