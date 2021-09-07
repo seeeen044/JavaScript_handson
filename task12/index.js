@@ -9,13 +9,9 @@ const appendButtonForParent = () => {
 };
 appendButtonForParent();
 
-const removeButton = () => {
-    document.getElementById("button").remove();
-};
-
-const addEvent = document.getElementById("button"); 
-addEvent.addEventListener('click', () => {
-    removeButton();
+const button = document.getElementById("button"); 
+button.addEventListener('click', (e) => {
+    button.remove();
     init();
 });
 
