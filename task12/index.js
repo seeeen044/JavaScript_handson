@@ -10,10 +10,16 @@ const appendButtonForParent = () => {
 appendButtonForParent();
 
 const button = document.getElementById("button"); 
-button.addEventListener('click', (e) => {
+button.addEventListener('click', () => {
     button.remove();
     init();
 });
+
+// or When using arguments
+// button.addEventListener('click', (e) => {
+//     e.target.remove();
+//     init();
+// });
 
 const getData = async () => {
     try {
