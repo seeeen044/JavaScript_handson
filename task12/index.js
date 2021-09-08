@@ -10,14 +10,14 @@ const appendButtonForParent = () => {
 appendButtonForParent();
 
 const button = document.getElementById("button"); 
-button.addEventListener('click', () => {
-    button.remove();
+button.addEventListener('click', (e) => {
+    e.target.remove();
     init();
 });
 
-// or When using arguments
-// button.addEventListener('click', (e) => {
-//     e.target.remove();
+// or When the argument is deleted
+// button.addEventListener('click', () => {
+//     button.remove();
 //     init();
 // });
 
