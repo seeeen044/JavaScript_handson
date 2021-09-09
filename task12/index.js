@@ -53,6 +53,11 @@ const appendListForParent = (value) => {
 };
 
 const init = async () => {
-    const value = await getData();
-    appendListForParent(value);
+    try {
+        const value = await getData();
+        appendListForParent(value);
+    } catch {
+        parent.textContent = "JSONデータを読み込めませんでした";
+        console.error(error); 
+    }
 };
