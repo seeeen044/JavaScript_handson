@@ -22,15 +22,9 @@ button.addEventListener('click', (e) => {
 // });
 
 const getData = async () => {
-    try {
-        const response = await fetch("https://jsondata.okiba.me/v1/json/3jhPW210812052923");
-        const data = response.json();
-        return data;
-            
-    } catch (error) {
-        parent.textContent = "データを読み込めませんでした";
-        console.error(error);
-    }
+    const response = await fetch("https://jsondata.okiba.me/v1/json/3jhPW210812052923");
+    const data = response.json();
+    return data;
 };
 
 const appendListForParent = (value) => {
