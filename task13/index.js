@@ -82,7 +82,7 @@ const init = async () => {
     try {
         const value = await getData();
         appendListForParent(value);
-    } catch {
+    } catch (error) {
         parent.textContent = "データを読み込めませんでした";
         console.error(error); 
     }
