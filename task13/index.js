@@ -29,16 +29,20 @@ const appendButtonForParent = () => {
 };
 appendButtonForParent();
 
-const modalEvent = document.getElementById("button"); 
-modalEvent.addEventListener('click', (e) => {
+const openBtn = document.getElementById("button");
+openBtn.addEventListener("click", (e) => {
     appendModalForParent();
     e.target.remove();
-    const closeEvent = document.getElementById("closeBtn");
-    closeEvent.addEventListener('click', () => {
-        document.getElementById('modalPlace').remove();
+    modalClose();
+});
+
+const modalClose = () => {
+    const closeBtn = document.getElementById("closeBtn");
+    closeBtn.addEventListener("click", () => {
+        document.getElementById("modalPlace").remove();
         init();
     });
-});
+};
 
 const getData = async () => {
     const response = await fetch("https://jsondata.okiba.me/v1/json/3jhPW210812052923");
