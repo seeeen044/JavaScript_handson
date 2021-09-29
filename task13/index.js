@@ -66,15 +66,15 @@ const appendListForParent = (value) => {
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
     
-    value.data.forEach(key => {
+    value.data.forEach(d => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         const img = document.createElement('img');
     
-        a.textContent = key.text;
-        a.href = key.a;
-        img.src = key.img;
-        img.alt = key.alt;
+        a.textContent = d.text;
+        a.href = d.a;
+        img.src = d.img;
+        img.alt = d.alt;
     
         fragment.appendChild(li).appendChild(a).appendChild(img);
     })
