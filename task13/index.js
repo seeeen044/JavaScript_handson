@@ -13,7 +13,7 @@ const appendModalForParent = () => {
     modalText.textContent = "クリックしてデータを取得します。";
     closeBtn.style.margin = '0 auto';
     closeBtn.style.display = "block";
-    closeBtn.id = "closeBtn";
+    closeBtn.id = "js-closeBtn";
     closeBtn.type = "button";
     closeBtn.value = "click";
 
@@ -22,14 +22,14 @@ const appendModalForParent = () => {
 
 const appendButtonForParent = () => {
     const button = document.createElement('input');
-    button.id = "button";
+    button.id = "js-openBtn";
     button.type = "button";
     button.value = "click";
     parent.appendChild(button);
 };
 appendButtonForParent();
 
-const openBtn = document.getElementById("button");
+const openBtn = document.getElementById("js-openBtn");
 openBtn.addEventListener("click", (e) => {
     appendModalForParent();
     e.target.remove();
@@ -37,7 +37,7 @@ openBtn.addEventListener("click", (e) => {
 });
 
 const modalClose = () => {
-    const closeBtn = document.getElementById("closeBtn");
+    const closeBtn = document.getElementById("js-closeBtn");
     closeBtn.addEventListener("click", () => {
         document.getElementById("modalPlace").remove();
         init();
