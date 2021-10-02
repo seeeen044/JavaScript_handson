@@ -1,23 +1,17 @@
 const parent = document.getElementById("js-parent"); 
+const modalPlace = document.getElementById('js-modal');
 
 const appendModalForParent = () => {
-    const modalPlace = document.createElement('section');
     const modalText = document.createElement('p');
     const closeBtn = document.createElement('input');
-    modalPlace.style.margin = '0 auto';
-    modalPlace.style.textAlign = "center";
-    modalPlace.style.width = '300px';
-    modalPlace.style.padding = '20px';
     modalPlace.style.backgroundColor = "lightGray";
-    modalPlace.id = "modalPlace";
     modalText.textContent = "クリックしてデータを取得します。";
-    closeBtn.style.margin = '0 auto';
-    closeBtn.style.display = "block";
     closeBtn.id = "js-closeBtn";
     closeBtn.type = "button";
     closeBtn.value = "click";
 
-    parent.appendChild(modalPlace).insertBefore(modalText, modalPlace.firstChild).appendChild(closeBtn);
+    modalPlace.appendChild(modalText);
+    modalPlace.appendChild(closeBtn);
 };
 
 const appendButtonForParent = () => {
@@ -39,15 +33,15 @@ openBtn.addEventListener("click", (e) => {
 const modalClose = () => {
     const closeBtn = document.getElementById("js-closeBtn");
     closeBtn.addEventListener("click", () => {
-        document.getElementById("modalPlace").remove();
+        modalPlace.style.display = "none";
         init();
     });
 };
 
-const getData = async () => {
+const getFetchData = async () => {
     const response = await fetch("https://jsondata.okiba.me/v1/json/3jhPW210812052923");
-    const data = response.json();
-    return data;
+    const json = await response.json();
+    return json.data;
 };
 
 const loading = () => {
@@ -66,7 +60,7 @@ const appendListForParent = (value) => {
     const ul = document.createElement('ul');
     const fragment = document.createDocumentFragment();
     
-    value.data.forEach(d => {
+    value.forEach(d => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         const img = document.createElement('img');
@@ -84,7 +78,7 @@ const appendListForParent = (value) => {
 const init = async () => {
     loading();
     try {
-        const value = await getData();
+        const value = await getFetchData();
         appendListForParent(value);
     } catch (error) {
         parent.textContent = "データを読み込めませんでした";
