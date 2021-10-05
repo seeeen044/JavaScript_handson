@@ -1,12 +1,14 @@
 const parent = document.getElementById("js-parent"); 
-const modalPlace = document.getElementById('js-modal');
+const modalPlace = document.getElementById('modalPlace');
 
 const appendModalForParent = () => {
     const modalText = document.createElement('p');
     const closeBtn = document.createElement('input');
-    modalPlace.style.backgroundColor = "lightGray";
+    modalPlace.style.display = "block";
     modalText.textContent = "クリックしてデータを取得します。";
     closeBtn.id = "js-closeBtn";
+    closeBtn.style.margin = '0 auto';
+    closeBtn.style.display = "block";
     closeBtn.type = "button";
     closeBtn.value = "click";
 

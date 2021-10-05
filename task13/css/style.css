@@ -1,12 +1,8 @@
-#js-modal {
+#modalPlace {
     margin: 0 auto;
     text-align: center;
     width: 300px;
     padding: 20px;
-    /* background-color: #ccc; */
-}
-
-#js-closeBtn {
-    margin: 0 auto;
-    display: block;
+    background-color: #ccc;
+    display: none;
 }
