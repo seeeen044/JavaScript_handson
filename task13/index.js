@@ -4,11 +4,11 @@ const modalPlace = document.getElementById('modalPlace');
 const appendModalForParent = () => {
     const modalText = document.createElement('p');
     const closeBtn = document.createElement('input');
+    modalPlace.className = "modal";
     modalPlace.style.display = "block";
     modalText.textContent = "クリックしてデータを取得します。";
     closeBtn.id = "js-closeBtn";
-    closeBtn.style.margin = '0 auto';
-    closeBtn.style.display = "block";
+    closeBtn.className = "close-button";
     closeBtn.type = "button";
     closeBtn.value = "click";
 
