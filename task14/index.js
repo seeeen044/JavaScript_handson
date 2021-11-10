@@ -32,7 +32,7 @@ appendButtonForParent();
 
 const requestNumber = () => {
     const getValue = document.getElementById("js-number");
-    if(getValue.value == ""){
+    if(getValue.value === ""){
         alert("数字を入力してください");
         return false;
     } else {
