@@ -63,7 +63,7 @@ const getFetchData = async () => {
     return json.data;
 };
 
-const loading = () => {
+const addLoading = () => {
     const loadingPlace = document.createElement("div");
     const gif = document.createElement('img');
     loadingPlace.id = "loadingPlace";
@@ -95,7 +95,7 @@ const appendListForParent = (value) => {
 };
 
 const init = async () => {
-    loading();
+    addLoading();
     try {
         const value = await getFetchData();
         appendListForParent(value);
