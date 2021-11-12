@@ -1,5 +1,5 @@
 const parent = document.getElementById("js-parent"); 
-const modalPlace = document.getElementById('modalPlace');
+const modalPlace = document.getElementById('js-modalPlace');
 
 const appendModalForParent = () => {
     const modalText = document.createElement('p');
