@@ -100,7 +100,9 @@ const init = async () => {
         const value = await getFetchData();
         appendListForParent(value);
     } catch (error) {
-        parent.textContent = "データを読み込めませんでした";
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = "データを読み込めませんでした";
+        parent.appendChild(errorMessage);        
         console.error(error); 
     }
     finally{
