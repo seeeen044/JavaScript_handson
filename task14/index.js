@@ -34,12 +34,10 @@ const requestNumber = () => {
     const getValue = document.getElementById("js-number");
     if(getValue.value === ""){
         alert("数字を入力してください");
-        return false;
     } else {
         console.log(getValue.value);
         modalPlace.style.display = "none";
         init();
-        return true;
     }
 };
 
