@@ -1,0 +1,17 @@
+.modal {
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+    padding: 20px;
+    background-color: #ccc;
+    display: none;
+}
+
+.number {
+    margin-bottom: 10px;
+}
+
+.close-button {
+    margin: 0 auto;
+    display: block;
+}
