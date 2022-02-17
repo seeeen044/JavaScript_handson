@@ -27,14 +27,14 @@ const modalClose = () => {
 };
 
 const requestValue = () => {
-    const getName = document.getElementById("js-getName");
-    const getNumber = document.getElementById("js-getNumber");
+    const getName = document.getElementById("js-getName").value;
+    const getNumber = document.getElementById("js-getNumber").value;
 
-    if(getName.value  === "" || getNumber.value === ""){
+    if(getName  === "" || getNumber === ""){
         alert("入力してください");
     } else {
-        console.log(getName.value);
-        console.log(getNumber.value);
+        console.log(getName);
+        console.log(getNumber);
         modalPlace.style.display = "none";
         init();
     }
