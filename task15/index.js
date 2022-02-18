@@ -30,7 +30,7 @@ const requestValue = () => {
     const getName = document.getElementById("js-getName").value;
     const getNumber = document.getElementById("js-getNumber").value;
 
-    if(getName  === "" || getNumber === ""){
+    if(!getName.match(/\S/g) || getNumber === ""){
         alert("入力してください");
     } else {
         console.log(getName);
