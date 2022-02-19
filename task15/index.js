@@ -30,7 +30,7 @@ const requestValue = () => {
     const getName = document.getElementById("js-getName").value;
     const getNumber = document.getElementById("js-getNumber").value;
 
-    if( getName.match(/\S/g) && getNumber){
+    if( getName.trim() && getNumber){
         console.log(getName);
         console.log(getNumber);
         modalPlace.style.display = "none";
