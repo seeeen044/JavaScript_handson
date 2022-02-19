@@ -30,14 +30,14 @@ const requestValue = () => {
     const getName = document.getElementById("js-getName").value;
     const getNumber = document.getElementById("js-getNumber").value;
 
-    if(!getName.match(/\S/g) || getNumber === ""){
-        alert("入力してください");
-    } else {
+    if( getName.match(/\S/g) && getNumber){
         console.log(getName);
         console.log(getNumber);
         modalPlace.style.display = "none";
         init();
+        return
     }
+        alert("入力してください");
 };
 
 const getFetchData = async () => {
@@ -54,9 +54,7 @@ const addLoading = () => {
     parent.appendChild(loadingPlace).appendChild(gif);
 };
 
-const removeLoading = () => {
-    document.getElementById("loadingPlace").remove();
-};
+const removeLoading = () => document.getElementById("loadingPlace").remove();
 
 const renderListForParent = (value) => {
     const ul = document.createElement('ul');
