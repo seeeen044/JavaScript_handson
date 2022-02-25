@@ -1,0 +1,49 @@
+body {
+    padding: 60px;
+    background-color: rgb(234, 235, 236);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.all {
+    width: 760px;
+    margin: 0 auto;
+}
+
+.tab-menu {
+   overflow: hidden; 
+   display: flex;
+   justify-content: space-between;
+}
+
+.menu {
+    padding: 15px 0 15px;
+    width: 188px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(8, 2, 58);
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+}
+.menu.active {
+    background: #fff;
+    color: rgb(8, 2, 58);
+}
+
+.menu:hover {
+    text-decoration: underline;
+}
+
+.contents {
+    background: #fff;
+    padding: 15px;
+}
+
+.content {
+    display: none;
+}
+
+.content.show {
+    display: block;
+}
