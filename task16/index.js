@@ -36,7 +36,7 @@ const init = async () => {
         const value = await getFetchData();
         renderTabMenu(value);
         renderTabContainer(value);
-        tabSwitch();
+        // tabSwitch();
     }
     catch(error) {
         console.error(error);
@@ -93,8 +93,7 @@ const getNewsTitle = ({article}) => {
     return newsTitleFragment;
 };
 
-const tabSwitch = () => {
-    addEventListener('click', (e) => {
+    tab.addEventListener('click', (e) => {
     const active = document.querySelector(".active");
     const show = document.querySelector(".show");
     active.classList.remove("active");
@@ -106,4 +105,4 @@ const tabSwitch = () => {
     const tabContent = document.getElementsByClassName("news-wrapper");
     tabContent[index].classList.add("show");
     });
-};
+    
