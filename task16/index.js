@@ -36,3 +36,15 @@ const init = async () => {
 };
 init();
 
+const renderTabMenu = (value) => {
+    const tabMenuFragment = document.createDocumentFragment();
+    for(let i = 0; i < value.length; i++){
+        const menuList = createElementWithClassName('li', "menu-list");
+        menuList.id = `js-tabMenuList${i}`;
+        menuList.textContent = value[i].category;
+        tabMenuFragment.appendChild(menuList);
+    }
+    tab.appendChild(tabMenuFragment);
+    const addClassActive = document.getElementById("js-tabMenuList0");
+    addClassActive.classList.add("active");
+};
