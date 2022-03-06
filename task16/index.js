@@ -17,7 +17,6 @@ const addLoading = () => {
 const removeLoading = () => document.getElementById("loadingPlace").remove();
 
 const getFetchData = async () => {
-    addLoading();
     try{
         const respons = await fetch(URL);
         if(!respons.ok){
@@ -29,12 +28,10 @@ const getFetchData = async () => {
     catch(error) {
         console.error(error);
     }
-    finally {
-        removeLoading();
-    }
 };
 
 const init = async () => {
+    addLoading();
     try {
         const value = await getFetchData();
         renderTabMenu(value);
@@ -44,6 +41,9 @@ const init = async () => {
     catch(error) {
         console.error(error);
         tab.textContent = "データを読み込めませんでした";
+    }
+    finally {
+        removeLoading();
     }
 };
 init();
