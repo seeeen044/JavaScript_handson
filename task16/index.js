@@ -80,3 +80,18 @@ const getNewsTitle = ({article}) => {
     }
     return newsTitleFragment;
 };
+
+const tabSwitch = () => {
+    addEventListener('click', (e) => {
+    const active = document.querySelector(".active");
+    const show = document.querySelector(".show");
+    active.classList.remove("active");
+    e.target.classList.add("active");
+    const tabMenu = document.querySelectorAll(".menu-list")
+    const arrayTabMenu = Array.prototype.slice.call(tabMenu);
+    const index = arrayTabMenu.indexOf(e.target);
+    show.classList.remove("show");
+    const tabContent = document.getElementsByClassName("news-wrapper");
+    tabContent[index].classList.add("show");
+    });
+};
