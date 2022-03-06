@@ -8,7 +8,16 @@ const createElementWithClassName = (element, name) => {
     return createdElement;
 };
 
+const addLoading = () => {
+    const loadingPlace = createElementWithClassName('div', "loader");
+    loadingPlace.id = "loadingPlace";
+    tabWrapper.appendChild(loadingPlace);
+}
+
+const removeLoading = () => document.getElementById("loadingPlace").remove();
+
 const getFetchData = async () => {
+    addLoading();
     try{
         const respons = await fetch(URL);
         if(!respons.ok){
@@ -19,6 +28,9 @@ const getFetchData = async () => {
     }
     catch(error) {
         console.error(error);
+    }
+    finally {
+        removeLoading();
     }
 };
 
