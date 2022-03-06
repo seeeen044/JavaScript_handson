@@ -2,20 +2,18 @@ body {
     padding: 60px;
     background-color: rgb(234, 235, 236);
     font-family:Arial, Helvetica, sans-serif;
-}
-
-.all {
-    width: 760px;
-    margin: 0 auto;
+    letter-spacing: .1em;
 }
 
 .tab-menu {
+   max-width: 760px;
+   margin: 0 auto;
    overflow: hidden; 
    display: flex;
    justify-content: space-between;
 }
 
-.menu {
+.menu-list {
     padding: 15px 0 15px;
     width: 188px;
     text-align: center;
@@ -26,24 +24,46 @@ body {
     font-size: 15px;
     text-decoration: none;
 }
-.menu.active {
+.menu-list.active {
     background: #fff;
     color: rgb(8, 2, 58);
 }
 
-.menu:hover {
+.menu-list:hover {
     text-decoration: underline;
 }
 
-.contents {
+.tab-container {
+    max-width: 760px;
+    margin: 0 auto;
     background: #fff;
-    padding: 15px;
+    box-sizing: border-box;
+    padding: 20px 35px;
+    display: block;
 }
 
-.content {
+.news-wrapper.show {
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-wrapper {
     display: none;
 }
 
-.content.show {
-    display: block;
+.news-img {
+    max-width: 280px;
+}
+
+.news-title-item {
+    margin: 30px 0 15px 40px;
+    list-style: square;
+}
+.news-link {
+    color: rgb(0, 20, 201);
+    text-decoration: none;
+}
+.news-link:hover {
+    color: rgb(201, 0, 27);
+    text-decoration: underline;
 }
