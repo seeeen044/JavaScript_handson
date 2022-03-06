@@ -68,3 +68,15 @@ const renderTabContainer = (value) => {
     addClassShow.classList.add("show");
 };
 
+const getNewsTitle = ({article}) => {
+    const newsTitleFragment = document.createDocumentFragment();
+    for(let i = 0; i < article.length; i++){
+        const newsTitleItem = createElementWithClassName('li', "news-title-item");
+        const newsLink = createElementWithClassName('a', "news-link");
+        newsLink.textContent = article[i].title;
+        newsLink.href = "#";
+
+        newsTitleFragment.appendChild(newsTitleItem).appendChild(newsLink);
+    }
+    return newsTitleFragment;
+};
