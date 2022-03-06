@@ -106,7 +106,6 @@ body {
 
 .news-wrapper.show {
     display: flex;
-    justify-content: space-between;
 }
 
 .news-wrapper {
@@ -130,3 +129,18 @@ body {
     color: rgb(201, 0, 27);
     text-decoration: underline;
 }
+
+@media screen and (min-width:769px){
+    /* PC用CSS -------------- */
+    .news-wrapper.show {
+        justify-content: space-between;
+    }
+    
+    }
+    
+    @media screen and (max-width:768px){
+    /* スマホ用CSS -------------- */
+    .news-wrapper.show {
+        flex-direction: column;
+    }
+    }
