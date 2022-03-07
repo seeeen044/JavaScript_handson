@@ -117,24 +117,24 @@ body {
   width: 280px;
 }
 
-.news-title-list {
+.article-title-list {
   margin-top: 30px;
   margin-left: 40px;
 }
 
-.news-title-item {
+.article-title-item {
   list-style: square;
 }
 
-.news-title-item:nth-child(n + 2) {
+.article-title-item:nth-child(n + 2) {
   margin-top: 45px;
 }
 
-.news-link {
+.article-link {
   color: rgb(0, 20, 201);
   text-decoration: none;
 }
-.news-link:hover {
+.article-link:hover {
   color: rgb(201, 0, 27);
   text-decoration: underline;
 }

@@ -62,15 +62,15 @@ const renderTabContainer = (value) => {
   const tabContentsFragment = document.createDocumentFragment();
   for (let i = 0; i < value.length; i++) {
     const newsWrapper = createElementWithClassName("div", "news-wrapper");
-    const newsTitlelist = createElementWithClassName("ul", "news-title-list");
+    const articleTitlelist = createElementWithClassName("ul", "article-title-list");
     const newsImg = createElementWithClassName("img", "news-img");
     newsWrapper.id = `js-newsWrapper${i}`;
     newsImg.src = value[i].img;
 
     tabContentsFragment
       .appendChild(newsWrapper)
-      .appendChild(newsTitlelist)
-      .appendChild(getNewsTitle(value[i]));
+      .appendChild(articleTitlelist)
+      .appendChild(createArticleTitle(value[i]));
 
     tabContentsFragment.appendChild(newsWrapper).appendChild(newsImg);
   }
@@ -80,17 +80,19 @@ const renderTabContainer = (value) => {
   addClassShow.classList.add("show");
 };
 
-const getNewsTitle = ({ article }) => {
-  const newsTitleFragment = document.createDocumentFragment();
+const createArticleTitle = ({ article }) => {
+  const articleTitleFragment = document.createDocumentFragment();
   for (let i = 0; i < article.length; i++) {
-    const newsTitleItem = createElementWithClassName("li", "news-title-item");
-    const newsLink = createElementWithClassName("a", "news-link");
-    newsLink.textContent = article[i].title;
-    newsLink.href = "#";
+    const articleTitleItem = createElementWithClassName("li", "article-title-item");
+    const articleWrapper = createElementWithClassName("article", "article-wrapper");
+    const articleLink = createElementWithClassName("a", "article-link");
+    const articleTitle = createElementWithClassName("h1", "article-title");
+    articleTitle.textContent = article[i].title;
+    articleLink.href = "#";
 
-    newsTitleFragment.appendChild(newsTitleItem).appendChild(newsLink);
+    articleTitleFragment.appendChild(articleTitleItem).appendChild(articleWrapper).appendChild(articleLink).appendChild(articleTitle);
   }
-  return newsTitleFragment;
+  return articleTitleFragment;
 };
 
 tab.addEventListener("click", (e) => {
