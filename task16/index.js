@@ -217,7 +217,6 @@ const init = async () => {
     const value = await getFetchData();
     renderTabMenu(value);
     renderTabContainer(value);
-    // tabSwitch();
   } catch (error) {
     console.error(error);
     tab.textContent = "データを読み込めませんでした";
@@ -233,7 +232,7 @@ const renderTabMenu = (value) => {
     const menuList = createElementWithClassName("li", "menu-list");
     menuList.dataset.index = i;
     menuList.textContent = value[i].category;
-    value[i].display === true && menuList.classList.add("active");
+    value[i].display && menuList.classList.add("active");
     tabMenuFragment.appendChild(menuList);
   }
   tab.appendChild(tabMenuFragment);
@@ -245,7 +244,7 @@ const renderTabContainer = (value) => {
     const newsWrapper = createElementWithClassName("div", "news-wrapper");
     const articleTitlelist = createElementWithClassName("ul", "article-title-list");
     const newsImg = createElementWithClassName("img", "news-img");
-    value[i].display === true && newsWrapper.classList.add("show");
+    value[i].display && newsWrapper.classList.add("show");
     newsImg.src = value[i].img;
 
     tabContentsFragment

@@ -84,6 +84,7 @@ body {
   font-weight: bold;
   font-size: 15px;
   text-decoration: none;
+  cursor: pointer;
 }
 .menu-list.active {
   background: #fff;
