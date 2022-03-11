@@ -274,6 +274,7 @@ const createArticleTitle = ({ article }) => {
 };
 
 tab.addEventListener("click", (e) => {
+  if (e.target === tab) return;
   const active = document.querySelector(".active");
   const show = document.querySelector(".show");
   active.classList.remove("active");
