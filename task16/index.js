@@ -279,10 +279,7 @@ tab.addEventListener("click", (e) => {
   const show = document.querySelector(".show");
   active.classList.remove("active");
   e.target.classList.add("active");
-  const tabMenu = document.querySelectorAll(".menu-list");
-  const arrayTabMenu = Array.prototype.slice.call(tabMenu);
-  const index = arrayTabMenu.indexOf(e.target);
   show.classList.remove("show");
-  const tabContent = document.getElementsByClassName("news-wrapper");
-  tabContent[index].classList.add("show");
+  const contents = document.getElementsByClassName("news-wrapper");
+  contents[e.target.dataset.index].classList.add("show");
 });
