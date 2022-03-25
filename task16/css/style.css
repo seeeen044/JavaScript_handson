@@ -125,6 +125,7 @@ body {
 
 .article-title-item {
   list-style: square;
+
 }
 
 .article-title-item:nth-child(n + 2) {
@@ -134,10 +135,25 @@ body {
 .article-link {
   color: rgb(0, 20, 201);
   text-decoration: none;
+  display: flex;
+  align-items: flex-end
 }
 .article-link:hover {
   color: rgb(201, 0, 27);
   text-decoration: underline;
+}
+
+.comment-icon {
+    width: 30px;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 5px;
+}
+
+.comment-number {
+    color: rgb(201, 0, 27);
+    font-size: 14px;
+    margin-left: 5px;
 }
 
 @media screen and (min-width: 769px) {

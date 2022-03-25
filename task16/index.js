@@ -1,182 +1,182 @@
-// const URL = "https://myjson.dit.upm.es/api/bins/as8f";
-//*myjsonが繋がらないので一時的に一時的に下記の記述をしています。
-const URL = [
-    {
-      "category": "News",
-      "display": true,
-      "img": "./img/news.png",
-      "article": [
-        {
-          "data": "2022/02/24",
-          "title": "News01",
-          "comment": [
-            {
-              "name": "Harry",
-              "data": "2022/02/24"
-            },
-            {
-              "name": "James",
-              "data": "2022/02/25"
-            }
-          ]
-        },
-        {
-          "data": "2022/02/02",
-          "title": "News02",
-          "comment": [{}]
-        },
-        {
-          "data": "2022/02/12",
-          "title": "News03",
-          "comment": [
-            {
-              "name": "Lily",
-              "data": "2022/02/13"
-            },
-            {
-              "name": "Ather",
-              "data": "2022/02/25"
-            }
-          ]
-        },
-        {
-          "data": "2022/02/18",
-          "title": "News04",
-          "comment": [{}]
-        }
-      ]
-    },
-    {
-      "category": "Economic",
-      "display": false,
-      "img": "./img/economic.png",
-      "article": [
-        {
-          "data": "2022/02/26",
-          "title": "Economic01",
-          "comment": [
-            {
-              "name": "Arther",
-              "data": "2022/02/24"
-            },
-            {
-              "name": "Bill",
-              "data": "2022/02/25"
-            }
-          ]
-        },
-        {
-          "data": "2022/02/27",
-          "title": "Economic02",
-          "comment": [
-            {
-              "name": "Charlie",
-              "data": "2022/02/24"
-            },
-            {
-              "name": "Fred",
-              "data": "2022/02/25"
-            }
-          ]
-        },
-        {
-          "data": "2022/02/10",
-          "title": "Economic03",
-          "comment": [{}]
-        },
-        {
-          "data": "2022/02/02",
-          "title": "Economic04",
-          "comment": [{}]
-        }
-      ]
-    },
-    {
-      "category": "Movie",
-      "display": false,
-      "img": "./img/movie.png",
-      "article": [
-        {
-          "data": "2022/02/18",
-          "title": "Movie01",
-          "comment": [
-            {
-              "name": "Charlie",
-              "data": "2022/02/24"
-            },
-            {
-              "name": "Fred",
-              "data": "2022/02/25"
-            },
-            {
-              "name": "Geroge",
-              "data": "2022/02/24"
-            }
-          ]
-        },
-        {
-          "data": "2022/02/12",
-          "title": "Movie02",
-          "comment": [{}]
-        },
-        {
-          "data": "2022/02/23",
-          "title": "Movie03",
-          "comment": [
-            {
-              "name": "Ron",
-              "data": "2022/02/25"
-            }
-          ]
-        },
-        {
-          "data": "2022/02/28",
-          "title": "Movie04",
-          "comment": [{}]
-        }
-      ]
-    },
-    {
-      "category": "Sports",
-      "display": false,
-      "img": "./img/sports.png",
-      "article": [
-        {
-          "data": "2022/02/28",
-          "title": "Sports01",
-          "comment": [
-            {
-              "name": "Ginny",
-              "data": "2022/02/24"
-            },
-            {
-              "name": "Morry",
-              "data": "2022/02/25"
-            },
-            {
-              "name": "Percy",
-              "data": "2022/02/24"
-            }
-          ]
-        },
-        {
-          "data": "2022/03/01",
-          "title": "Sports02",
-          "comment": [{}]
-        },
-        {
-          "data": "2022/03/03",
-          "title": "Sports03",
-          "comment": [{}]
-        },
-        {
-          "data": "2022/03/03",
-          "title": "Sports04",
-          "comment": [{}]
-        }
-      ]
-    }
-  ]
+const URL = "https://mocki.io/v1/44000c2f-3fbc-449a-9fcc-20a292cadde7";
+// *myjsonが繋がらないので一時的に一時的に下記の記述をしています。
+// const URL = [
+//     {
+//       "category": "News",
+//       "display": true,
+//       "img": "./img/news.png",
+//       "article": [
+//         {
+//           "data": "2022/02/24",
+//           "title": "News01",
+//           "comment": [
+//             {
+//               "name": "Harry",
+//               "data": "2022/02/24"
+//             },
+//             {
+//               "name": "James",
+//               "data": "2022/02/25"
+//             }
+//           ]
+//         },
+//         {
+//           "data": "2022/02/02",
+//           "title": "News02",
+//           "comment": [{}]
+//         },
+//         {
+//           "data": "2022/02/12",
+//           "title": "News03",
+//           "comment": [
+//             {
+//               "name": "Lily",
+//               "data": "2022/02/13"
+//             },
+//             {
+//               "name": "Ather",
+//               "data": "2022/02/25"
+//             }
+//           ]
+//         },
+//         {
+//           "data": "2022/02/18",
+//           "title": "News04",
+//           "comment": [{}]
+//         }
+//       ]
+//     },
+//     {
+//       "category": "Economic",
+//       "display": false,
+//       "img": "./img/economic.png",
+//       "article": [
+//         {
+//           "data": "2022/02/26",
+//           "title": "Economic01",
+//           "comment": [
+//             {
+//               "name": "Arther",
+//               "data": "2022/02/24"
+//             },
+//             {
+//               "name": "Bill",
+//               "data": "2022/02/25"
+//             }
+//           ]
+//         },
+//         {
+//           "data": "2022/02/27",
+//           "title": "Economic02",
+//           "comment": [
+//             {
+//               "name": "Charlie",
+//               "data": "2022/02/24"
+//             },
+//             {
+//               "name": "Fred",
+//               "data": "2022/02/25"
+//             }
+//           ]
+//         },
+//         {
+//           "data": "2022/02/10",
+//           "title": "Economic03",
+//           "comment": [{}]
+//         },
+//         {
+//           "data": "2022/02/02",
+//           "title": "Economic04",
+//           "comment": [{}]
+//         }
+//       ]
+//     },
+//     {
+//       "category": "Movie",
+//       "display": false,
+//       "img": "./img/movie.png",
+//       "article": [
+//         {
+//           "data": "2022/02/18",
+//           "title": "Movie01",
+//           "comment": [
+//             {
+//               "name": "Charlie",
+//               "data": "2022/02/24"
+//             },
+//             {
+//               "name": "Fred",
+//               "data": "2022/02/25"
+//             },
+//             {
+//               "name": "Geroge",
+//               "data": "2022/02/24"
+//             }
+//           ]
+//         },
+//         {
+//           "data": "2022/02/12",
+//           "title": "Movie02",
+//           "comment": [{}]
+//         },
+//         {
+//           "data": "2022/02/23",
+//           "title": "Movie03",
+//           "comment": [
+//             {
+//               "name": "Ron",
+//               "data": "2022/02/25"
+//             }
+//           ]
+//         },
+//         {
+//           "data": "2022/02/28",
+//           "title": "Movie04",
+//           "comment": [{}]
+//         }
+//       ]
+//     },
+//     {
+//       "category": "Sports",
+//       "display": false,
+//       "img": "./img/sports.png",
+//       "article": [
+//         {
+//           "data": "2022/02/28",
+//           "title": "Sports01",
+//           "comment": [
+//             {
+//               "name": "Ginny",
+//               "data": "2022/02/24"
+//             },
+//             {
+//               "name": "Morry",
+//               "data": "2022/02/25"
+//             },
+//             {
+//               "name": "Percy",
+//               "data": "2022/02/24"
+//             }
+//           ]
+//         },
+//         {
+//           "data": "2022/03/01",
+//           "title": "Sports02",
+//           "comment": [{}]
+//         },
+//         {
+//           "data": "2022/03/03",
+//           "title": "Sports03",
+//           "comment": [{}]
+//         },
+//         {
+//           "data": "2022/03/03",
+//           "title": "Sports04",
+//           "comment": [{}]
+//         }
+//       ]
+//     }
+//   ]
 
 const tabWrapper = document.getElementById("js-tabWrapper");
 const tab = document.getElementById("js-tabMenu");
@@ -197,15 +197,15 @@ const removeLoading = () => document.getElementById("loadingPlace").remove();
 
 const getFetchData = async () => {
   try {
-// const respons = await fetch(URL);
-    // if (!respons.ok) {
-    //   throw new Error("ただいまサーバー側で通信が壊れています");
-    // }
-    // const json = await respons.json();
-    // return json;
-    //*myjsonが繋がらないので一時的に下記の記述をしています。
-    const json =  URL;
+    const respons = await fetch(URL);
+    if (!respons.ok) {
+      throw new Error("ただいまサーバー側で通信が壊れています");
+    }
+    const json = await respons.json();
     return json;
+    // *myjsonが繋がらないので一時的に下記の記述をしています。
+    // const json =  URL;
+    // return json;
   } catch (error) {
     console.error("error:ただいまサーバー側で通信が壊れています");
   }
@@ -217,6 +217,7 @@ const init = async () => {
     const value = await getFetchData();
     renderTabMenu(value);
     renderTabContainer(value);
+
   } catch (error) {
     console.error(error);
     tab.textContent = "データを読み込めませんでした";
@@ -268,7 +269,16 @@ const createArticleTitle = ({ article }) => {
     articleTitle.textContent = article[i].title;
     articleLink.href = "#";
 
-    articleTitleFragment.appendChild(articleTitleItem).appendChild(articleWrapper).appendChild(articleLink).appendChild(articleTitle);
+    articleTitleFragment
+      .appendChild(articleTitleItem)
+      .appendChild(articleWrapper)
+      .appendChild(articleLink)
+      .appendChild(articleTitle)
+
+    const renderComment = article[i].comment.length;
+    if(renderComment > !0){
+        articleLink.appendChild(createCommentCount(article[i]));
+    }
   }
   return articleTitleFragment;
 };
@@ -283,3 +293,15 @@ tab.addEventListener("click", (e) => {
   const contents = document.getElementsByClassName("news-wrapper");
   contents[e.target.dataset.index].classList.add("show");
 });
+
+const createCommentCount = (commentValue) => {
+ const commentCount = commentValue.comment.length;
+ const commentContainer = createElementWithClassName("span", "comment-icon");
+ const commentImg = createElementWithClassName("img", "comment-img");
+ const commentNumber = createElementWithClassName("span", "comment-number");
+ commentNumber.textContent = commentCount;
+ commentImg.src = "./img/comment_16x16.png";
+ commentContainer.appendChild(commentImg);
+ commentContainer.appendChild(commentNumber);
+ return commentContainer;
+}
