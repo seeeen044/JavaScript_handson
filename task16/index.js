@@ -21,7 +21,7 @@ const getFetchData = async () => {
   try {
     const respons = await fetch(URL);
     if (!respons.ok) {
-      throw new Error("ただいまサーバー側で通信が壊れています");
+      console.error("ただいまサーバー側で通信が壊れています");
     }
     const json = await respons.json();
     return json;
