@@ -1,4 +1,4 @@
-const URL = "https://mocki.io/v1/df6df843-4452-4c7c-bfca-28891d5c4e9b";
+const URL = "https://mocki.io/v1/ce33509e-08ef-4d9e-bacc-7878cd0ba039";
 
 const tabWrapper = document.getElementById("js-tabWrapper");
 const tab = document.getElementById("js-tabMenu");
@@ -83,8 +83,14 @@ const renderTabContainer = (value) => {
 const createArticleTitle = ({ article }) => {
   const articleTitleFragment = document.createDocumentFragment();
   for (let i = 0; i < article.length; i++) {
-    const articleTitleItem = createElementWithClassName("li", "article-title-item");
-    const articleWrapper = createElementWithClassName("article", "article-wrapper");
+    const articleTitleItem = createElementWithClassName(
+      "li",
+      "article-title-item"
+    );
+    const articleWrapper = createElementWithClassName(
+      "article",
+      "article-wrapper"
+    );
     const articleLink = createElementWithClassName("a", "article-link");
     const articleTitle = createElementWithClassName("h1", "article-title");
     articleTitle.textContent = article[i].title;
@@ -96,18 +102,25 @@ const createArticleTitle = ({ article }) => {
       .appendChild(articleLink)
       .appendChild(articleTitle);
 
-    const articleDate = elapsedTime(article[i].date);
-    const newArrivalsLimiter = 3;
-    if (articleDate <= newArrivalsLimiter) {
-      articleLink.appendChild(createNewArrivals());
-    }
-
-    const commentLength = article[i].comment.length;
-    if (commentLength > 0) {
-      articleLink.appendChild(createCommentCount(article[i]));
-    }
+    renderNewArrivals(article[i], articleLink);
+    renderCommentCount(article[i], articleLink);
   }
   return articleTitleFragment;
+};
+
+const renderNewArrivals = (article, articleLink) => {
+  const articleDate = elapsedTime(article.date);
+  const newArrivalsLimiter = 3;
+  if (articleDate <= newArrivalsLimiter) {
+    articleLink.appendChild(createNewArrivals());
+  }
+};
+
+const renderCommentCount = (article, articleLink) => {
+  const commentLength = article.comment.length;
+  if (commentLength > 0) {
+    articleLink.appendChild(createCommentCount(article));
+  }
 };
 
 const elapsedTime = (articlePostedDate) => {
