@@ -119,7 +119,7 @@ const renderNewArrivals = (article, parent) => {
 const renderCommentCount = (article, parent) => {
   const commentLength = article.comment.length;
   if (commentLength > 0) {
-    parent.appendChild(createCommentCount(article));
+    parent.appendChild(createCommentCount(commentLength));
   }
 };
 
@@ -139,8 +139,7 @@ const createNewArrivals = () => {
   return newIconWrapper;
 };
 
-const createCommentCount = (commentValue) => {
-  const commentCount = commentValue.comment.length;
+const createCommentCount = (commentCount) => {
   const commentContainer = createElementWithClassName("span", "comment-icon");
   const commentImg = createElementWithClassName("img", "comment-img");
   const commentNumber = createElementWithClassName("span", "comment-number");
