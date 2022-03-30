@@ -108,18 +108,18 @@ const createArticleTitle = ({ article }) => {
   return articleTitleFragment;
 };
 
-const renderNewArrivals = (article, articleLink) => {
-  const diffDays= compareDates(article.date);
+const renderNewArrivals = (article, parent) => {
+  const diffDays = compareDates(article.date);
   const newArrivalsLimiter = 3;
   if (diffDays <= newArrivalsLimiter) {
-    articleLink.appendChild(createNewArrivals());
+    parent.appendChild(createNewArrivals());
   }
 };
 
-const renderCommentCount = (article, articleLink) => {
+const renderCommentCount = (article, parent) => {
   const commentLength = article.comment.length;
   if (commentLength > 0) {
-    articleLink.appendChild(createCommentCount(article));
+    parent.appendChild(createCommentCount(article));
   }
 };
 
