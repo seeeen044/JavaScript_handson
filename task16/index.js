@@ -109,9 +109,9 @@ const createArticleTitle = ({ article }) => {
 };
 
 const renderNewArrivals = (article, articleLink) => {
-  const articleDate = elapsedTime(article.date);
+  const diffDays= compareDates(article.date);
   const newArrivalsLimiter = 3;
-  if (articleDate <= newArrivalsLimiter) {
+  if (diffDays <= newArrivalsLimiter) {
     articleLink.appendChild(createNewArrivals());
   }
 };
@@ -123,7 +123,7 @@ const renderCommentCount = (article, articleLink) => {
   }
 };
 
-const elapsedTime = (articlePostedDate) => {
+const compareDates = (articlePostedDate) => {
   const postedDate = new Date(articlePostedDate);
   const today = new Date();
   const timeEquivalent = 1000 * 60 * 60 * 24;
