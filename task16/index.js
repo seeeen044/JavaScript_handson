@@ -72,7 +72,7 @@ const renderTabContainer = (value) => {
     tabContentsFragment
       .appendChild(newsWrapper)
       .appendChild(articleTitlelist)
-      .appendChild(createArticleTitle(value[i]));
+      .appendChild(createArticleItem(value[i]));
 
     tabContentsFragment.appendChild(newsWrapper).appendChild(newsImg);
   }
@@ -80,7 +80,7 @@ const renderTabContainer = (value) => {
   tabWrapper.appendChild(tabContainer).appendChild(tabContentsFragment);
 };
 
-const createArticleTitle = ({ article }) => {
+const createArticleItem = ({ article }) => {
   const articleTitleFragment = document.createDocumentFragment();
   for (let i = 0; i < article.length; i++) {
     const articleTitleItem = createElementWithClassName(
