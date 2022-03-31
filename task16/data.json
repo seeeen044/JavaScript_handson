@@ -1,0 +1,226 @@
+[
+  {
+    "id" : "ea6b35c5-3960-4d11-a60e-d8b2f2b26a6b",
+    "category": "News",
+    "display": true,
+    "img": "./img/news.png",
+    "article": [
+      {
+        "id" : "d1009acf-8213-4926-a6d7-db579ba25f7d",
+        "date": "2022/02/24",
+        "title": "News01",
+        "comment": [
+          { 
+            "id" : "33844100-83ce-4946-8da5-56fe00379704",
+            "name": "Harry",
+            "date": "2022/02/24",
+            "text" : "Expecto Petronum"
+          },
+          {
+            "id" : "10e1042a-084f-458e-b8dd-876e4ae23c2b",
+            "name": "James",
+            "date": "2022/02/25",
+            "text" : "Expelliarmus"
+          }
+        ]
+      },
+      {
+        "id" : "0447f263-b093-49a7-ba90-51f687400fa5",
+        "date": "2022/03/27",
+        "title": "News02",
+        "comment": []
+      },
+      {
+        "id" : "85f73b92-7274-4b60-b13e-e33f51183720",
+        "date": "2022/02/12",
+        "title": "News03",
+        "comment": [
+          {
+            "id" : "7226c15c-7a72-4f80-9403-20ba6227d606",
+            "name": "Lily",
+            "date": "2022/02/13",
+            "text" : "Episkey"
+          },
+          {
+            "id" : "219e54c6-3025-4ce7-ad57-7b61fe1a26d9",
+            "name": "Ather",
+            "date": "2022/02/25",
+            "text" : "Engorgio"
+          }
+        ]
+      },
+      {
+        "id" : "d70edc98-4956-4ac1-84e8-c004cb9188da",
+        "date": "2022/03/28",
+        "title": "News04",
+        "comment": []
+      }
+    ]
+  },
+  {
+    "id" : "2e293875-93c9-402c-a80e-910fe00cd3ec",
+    "category": "Economic",
+    "display": false,
+    "img": "./img/economic.png",
+    "article": [
+      {
+        "id" : "9a347614-af3e-401e-a832-6180cb2425c0",
+        "date": "2022/02/26",
+        "title": "Economic01",
+        "comment": [
+          {
+            "id" : "fc3ecb85-74bc-42ee-af87-b3b418fda821",
+            "name": "Albus",
+            "date": "2022/02/24",
+            "text" : "Oculus Reparo"
+          },
+          {
+            "id" : "726bc515-546b-40dd-ba85-f0e33645c027",
+            "name": "Bill",
+            "date": "2022/02/25",
+            "text" : "Emancipare"
+          }
+        ]
+      },
+      {
+        "id" : "501a0fbd-fb51-44c3-a59a-ff2881e0660e",
+        "date": "2022/03/24",
+        "title": "Economic02",
+        "comment": [
+          {
+            "id" : "f14fab5e-3084-4f0c-84c6-4fd95c9297e6",
+            "name": "Charlie",
+            "date": "2022/03/24",
+            "text" : "Oscausi"
+          },
+          {
+            "id" : "ac3a7d49-1977-4ab8-8c6f-48efdfb725e6",
+            "name": "Fred",
+            "date": "2022/03/25",
+            "text" : "Confringo"
+          }
+        ]
+      },
+      {
+        "id" : "3fe5dc68-cdb6-49f8-8d66-bea0e552f84c",
+        "date": "2022/03/26",
+        "title": "Economic03",
+        "comment": []
+      },
+      {
+        "id" : "f1e81a26-8da6-49f7-a4a2-df7cad1c826c",
+        "date": "2022/03/27",
+        "title": "Economic04",
+        "comment": []
+      }
+    ]
+  },
+  {
+    "id" : "09126103-f123-42ca-b705-84f1481637fe",
+    "category": "Movie",
+    "display": false,
+    "img": "./img/movie.png",
+    "article": [
+      {
+        "id" : "a7151771-b02e-4973-b0db-ad8a8868b51f",
+        "date": "2022/03/18",
+        "title": "Movie01",
+        "comment": [
+          {
+            "id" : "c1051d11-1ca7-457c-83e4-fc632b3111db",
+            "name": "Draco",
+            "date": "2022/03/24",
+            "text" : "Circumrota"
+          },
+          {
+            "id" : "98f4bf01-5472-42de-a8d1-00c0c4e14778",
+            "name": "Lucius",
+            "date": "2022/03/25",
+            "text" : "Crucio"
+          },
+          {
+            "id" : "c2c9b17e-2552-472f-a593-46725d2479ef",
+            "name": "Cedric",
+            "date": "2022/03/24",
+            "text" : "Surgito"
+          }
+        ]
+      },
+      {
+        "id" : "dee7c1f3-17d7-4add-a2c5-3ce73d0c4c5c",
+        "date": "2022/03/23",
+        "title": "Movie02",
+        "comment": []
+      },
+      {
+        "id" : "0df6407a-3c14-45b1-b8da-2c4b6c229154",
+        "date": "2022/03/27",
+        "title": "Movie03",
+        "comment": [
+          {
+            "id" : "82b8d56b-8fb3-4e42-9914-8550cac895df",
+            "name": "Ron",
+            "date": "2022/03/27",
+            "text" : "Colloportus"
+          }
+        ]
+      },
+      {
+        "id" : "b88b4dec-0a1c-4af0-a1de-effb9b3dd56e",
+        "date": "2022/03/28",
+        "title": "Movie04",
+        "comment": []
+      }
+    ]
+  },
+  {
+    "id" : "1c8bc2ae-483b-4bec-96d9-bdf4e715313e",
+    "category": "Sports",
+    "display": false,
+    "img": "./img/sports.png",
+    "article": [
+      {
+        "id" : "bc133940-c216-4327-b2ed-90be01e14c65",
+        "date": "2022/03/28",
+        "title": "Sports01",
+        "comment": [
+          {
+            "id" : "83fc0dbc-a8ba-4451-a932-6304ac8efdd7",
+            "name": "Ginny",
+            "date": "2022/03/28"
+          },
+          {
+            "id" : "84645e8f-f08f-474a-94aa-3f9608d9d746",
+            "name": "Morry",
+            "date": "2022/02/29",
+            "text" : "Cistem Aperio"
+          },
+          {
+            "id" : "287dce63-531a-4a8b-8633-fe8c03353a07",
+            "name": "Hermione",
+            "date": "2022/02/29",
+            "text" : "Obliviate"
+          }
+        ]
+      },
+      {
+        "id" : "e9dfb8a9-677c-42e7-a811-29790fb39b70",
+        "date": "2022/03/23",
+        "title": "Sports02",
+        "comment": []
+      },
+      {
+        "id" : "35020133-0d0b-4338-abf3-5d9cc2454ba6",
+        "date": "2022/03/29",
+        "title": "Sports03",
+        "comment": []
+      },
+      {
+        "id" : "2b757238-6896-4ce1-a9d0-6f9ba3b138fd",
+        "date": "2022/03/30",
+        "title": "Sports04",
+        "comment": []
+      }
+    ]
+  }
+]
