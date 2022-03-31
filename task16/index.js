@@ -109,7 +109,7 @@ const createArticleItem = ({ article }) => {
 };
 
 const renderNewArrivals = (article, parent) => {
-  const diffDays = compareDates(article.date);
+  const diffDays = getDiffDays(article.date);
   const newArrivalsLimiter = 3;
   if (diffDays <= newArrivalsLimiter) {
     parent.appendChild(createNewArrivals());
@@ -123,7 +123,7 @@ const renderCommentCount = (article, parent) => {
   }
 };
 
-const compareDates = (articlePostedDate) => {
+const getDiffDays = (articlePostedDate) => {
   const postedDate = new Date(articlePostedDate);
   const today = new Date();
   const timeEquivalent = 1000 * 60 * 60 * 24;
