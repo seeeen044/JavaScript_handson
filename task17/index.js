@@ -62,14 +62,12 @@ const renderSlideImage = (value) => {
   for (let i = 0; i < value.length; i++) {
     const slideImgItem = createElementWithClassName("li", "slide-img-item");
     const slideImage = createElementWithClassName("img", "slide-image");
-    slideImgItem.id = `js-slideImgItem${i}`;
-    slideImage.id = `slide-image${i}`;
     slideImage.src = value[i].img;
     slideImage.alt = value[i].alt;
     value[i].display && slideImgItem.classList.add("is-active");
     slideImgFragment.appendChild(slideImgItem).appendChild(slideImage);
   }
-  slideShowWrapper.appendChild(slideImgList).appendChild(slideImgFragment);
+  slideImgList.appendChild(slideImgFragment);
 };
 
 const renderSlideNumber = (value) => {
