@@ -74,8 +74,16 @@ const renderSlideNumber = (value) => {
   const slideNumText = createElementWithClassName("p", "slide-number");
   const slideLength = value.length;
   slideNumText.id = "js-slideNumber";
-  slideNumText.textContent = `1 / ${slideLength}`;
+  slideNumText.textContent = `${findIndexItem()} / ${slideLength}`;
   slideShowContainer.appendChild(slideNumText);
+};
+
+const findIndexItem = () => {
+  const slideItemArray = [...document.querySelectorAll(".slide-img-item")];
+  const indexItem = slideItemArray.findIndex(element =>
+    element.classList.contains("is-active")
+  );
+  return indexItem + 1;
 };
 
 const nextBtn = document.getElementById("js-nextBtn");
@@ -86,7 +94,9 @@ const addEventListenerForNextBtn = (value) => {
   nextBtn.addEventListener("click", () => {
     document.querySelector(".is-active").classList.remove("is-active");
     imgNum += 1;
-    document.getElementsByClassName("slide-img-item")[imgNum].classList.add("is-active");
+    document
+      .getElementsByClassName("slide-img-item")
+      [imgNum].classList.add("is-active");
     btnDisabled(value);
     renderActiveNumber(value);
   });
@@ -97,7 +107,9 @@ const addEventListenerForPrevBtn = (value) => {
   prevBtn.addEventListener("click", () => {
     document.querySelector(".is-active").classList.remove("is-active");
     imgNum -= 1;
-    document.getElementsByClassName("slide-img-item")[imgNum].classList.add("is-active");
+    document
+      .getElementsByClassName("slide-img-item")
+      [imgNum].classList.add("is-active");
     btnDisabled(value);
     renderActiveNumber(value);
   });
@@ -109,5 +121,7 @@ const btnDisabled = (value) => {
 };
 
 const renderActiveNumber = (value) => {
-  document.getElementById("js-slideNumber").textContent = `${imgNum + 1} / ${value.length}`
+  document.getElementById("js-slideNumber").textContent = `${imgNum + 1} / ${
+    value.length
+  }`;
 };
