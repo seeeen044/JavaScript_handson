@@ -134,7 +134,7 @@ body {
   height: 30px;
   cursor: pointer;
 }
-.prev-btn:hover {
+.prev-btn:hover, :disabled {
   opacity: 0.7;
 }
 
@@ -145,7 +145,7 @@ body {
   height: 30px;
   cursor: pointer;
 }
-.next-btn:hover {
+.next-btn:hover, :disabled {
   opacity: 0.7;
 }
 

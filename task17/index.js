@@ -62,6 +62,7 @@ const renderSlideImage = (value) => {
   for (let i = 0; i < value.length; i++) {
     const slideImgItem = createElementWithClassName("li", "slide-img-item");
     const slideImage = createElementWithClassName("img", "slide-image");
+    slideImage.id = `slide-image${i}`;
     slideImage.src = value[i].img;
     slideImage.alt = value[i].alt;
     value[i].display && slideImgItem.classList.add("is-active");
@@ -88,40 +89,40 @@ const findIndexItem = () => {
 
 const nextBtn = document.getElementById("js-nextBtn");
 const prevBtn = document.getElementById("js-prevBtn");
-let imgNum = 0;
+let currentIndexImg = 0;
 
 const addEventListenerForNextBtn = (value) => {
   nextBtn.addEventListener("click", () => {
     document.querySelector(".is-active").classList.remove("is-active");
-    imgNum += 1;
+    currentIndexImg += 1;
     document
       .getElementsByClassName("slide-img-item")
-      [imgNum].classList.add("is-active");
+      [currentIndexImg].classList.add("is-active");
     btnDisabled(value);
     renderActiveNumber(value);
   });
 };
 
 const addEventListenerForPrevBtn = (value) => {
-  prevBtn.disabled = imgNum === 0;
+  prevBtn.disabled = currentIndexImg === 0;
   prevBtn.addEventListener("click", () => {
     document.querySelector(".is-active").classList.remove("is-active");
-    imgNum -= 1;
+    currentIndexImg -= 1;
     document
       .getElementsByClassName("slide-img-item")
-      [imgNum].classList.add("is-active");
+      [currentIndexImg].classList.add("is-active");
     btnDisabled(value);
     renderActiveNumber(value);
   });
 };
 
 const btnDisabled = (value) => {
-  nextBtn.disabled = imgNum === value.length - 1;
-  prevBtn.disabled = imgNum === 0;
+  nextBtn.disabled = currentIndexImg === value.length - 1;
+  prevBtn.disabled = currentIndexImg === 0;
 };
 
 const renderActiveNumber = (value) => {
-  document.getElementById("js-slideNumber").textContent = `${imgNum + 1} / ${
+  document.getElementById("js-slideNumber").textContent = `${currentIndexImg + 1} / ${
     value.length
   }`;
 };
