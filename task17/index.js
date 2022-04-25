@@ -46,8 +46,6 @@ const init = async () => {
     const value = await fetchImgData();
     renderSlideImage(value);
     renderSlideNumber(value);
-    addEventListenerForNextBtn(value);
-    addEventListenerForPrevBtn(value);
   } catch (error) {
     console.error(error.message);
     renderErrorMessage("表示することができません");
@@ -86,34 +84,23 @@ const findIndexItem = () => {
   return indexItem + 1;
 };
 
+const slideBtn = document.querySelectorAll(".slide-btn");
 const nextBtn = document.getElementById("js-nextBtn");
 const prevBtn = document.getElementById("js-prevBtn");
 let currentIndexImg = 0;
 
-const addEventListenerForNextBtn = (value) => {
-  nextBtn.addEventListener("click", () => {
-    document.querySelector(".is-active").classList.remove("is-active");
-    currentIndexImg += 1;
-    document
-      .getElementsByClassName("slide-img-item")
-      [currentIndexImg].classList.add("is-active");
-    btnDisabled(value);
-    renderActiveNumber(value);
-  });
-};
-
-const addEventListenerForPrevBtn = (value) => {
-  prevBtn.disabled = currentIndexImg === 0;
-  prevBtn.addEventListener("click", () => {
-    document.querySelector(".is-active").classList.remove("is-active");
-    currentIndexImg -= 1;
-    document
-      .getElementsByClassName("slide-img-item")
-      [currentIndexImg].classList.add("is-active");
-    btnDisabled(value);
-    renderActiveNumber(value);
-  });
-};
+slideBtn.forEach((button) => {
+    prevBtn.disabled = currentIndexImg === 0;
+    button.addEventListener("click", (event) => {
+        const eventTarget = event.target.parentElement;
+        const slideImg = document.querySelectorAll(".slide-img-item");
+        document.querySelector(".is-active").classList.remove("is-active");
+        eventTarget.id === "js-nextBtn" ? ++currentIndexImg : --currentIndexImg;
+        slideImg[currentIndexImg].classList.add("is-active");
+        btnDisabled(slideImg);
+        renderActiveNumber(slideImg);
+    });
+});
 
 const btnDisabled = (value) => {
   nextBtn.disabled = currentIndexImg === value.length - 1;

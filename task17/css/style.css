@@ -101,27 +101,19 @@ body {
   max-width: 300px;
 }
 
-.prev-btn {
-  z-index: 10;
+.slide-btn {
   border: none;
+  z-index: 10;
   width: 30px;
   height: 30px;
   cursor: pointer;
+
 }
-.prev-btn:hover, :disabled {
+
+.slide-btn:hover, :disabled {
   opacity: 0.7;
 }
 
-.next-btn {
-  z-index: 11;
-  border: none;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-.next-btn:hover, :disabled {
-  opacity: 0.7;
-}
 
 .slide-number {
   text-align: center;
