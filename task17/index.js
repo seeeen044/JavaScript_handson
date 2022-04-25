@@ -78,7 +78,7 @@ const renderSlideNumber = (value) => {
 
 const findIndexItem = () => {
   const slideItemArray = [...document.querySelectorAll(".slide-img-item")];
-  const indexItem = slideItemArray.findIndex(element =>
+  const indexItem = slideItemArray.findIndex((element) =>
     element.classList.contains("is-active")
   );
   return indexItem + 1;
@@ -90,16 +90,16 @@ const prevBtn = document.getElementById("js-prevBtn");
 let currentIndexImg = 0;
 
 slideBtn.forEach((button) => {
-    prevBtn.disabled = currentIndexImg === 0;
-    button.addEventListener("click", (event) => {
-        const eventTarget = event.target.parentElement;
-        const slideImg = document.querySelectorAll(".slide-img-item");
-        document.querySelector(".is-active").classList.remove("is-active");
-        eventTarget.id === "js-nextBtn" ? ++currentIndexImg : --currentIndexImg;
-        slideImg[currentIndexImg].classList.add("is-active");
-        btnDisabled(slideImg);
-        renderActiveNumber(slideImg);
-    });
+  prevBtn.disabled = currentIndexImg === 0;
+  button.addEventListener("click", (event) => {
+    const eventTarget = event.target.parentElement;
+    const slideImg = document.querySelectorAll(".slide-img-item");
+    document.querySelector(".is-active").classList.remove("is-active");
+    eventTarget.id === "js-nextBtn" ? ++currentIndexImg : --currentIndexImg;
+    slideImg[currentIndexImg].classList.add("is-active");
+    btnDisabled(slideImg);
+    renderActiveNumber(slideImg);
+  });
 });
 
 const btnDisabled = (value) => {
@@ -108,7 +108,7 @@ const btnDisabled = (value) => {
 };
 
 const renderActiveNumber = (value) => {
-  document.getElementById("js-slideNumber").textContent = `${currentIndexImg + 1} / ${
-    value.length
-  }`;
+  document.getElementById("js-slideNumber").textContent = `${
+    currentIndexImg + 1
+  } / ${value.length}`;
 };
