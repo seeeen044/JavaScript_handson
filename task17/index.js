@@ -72,16 +72,9 @@ const renderSlideNumber = (value) => {
   const slideNumText = createElementWithClassName("p", "slide-number");
   const slideLength = value.length;
   slideNumText.id = "js-slideNumber";
-  slideNumText.textContent = `${findIndexItem()} / ${slideLength}`;
+  currentImgIndex = value.findIndex((v) => v.display);
+  slideNumText.textContent = `${currentImgIndex + 1} / ${slideLength}`;
   slideShowContainer.appendChild(slideNumText);
-};
-
-const findIndexItem = () => {
-  const slideItemArray = [...document.querySelectorAll(".slide-img-item")];
-  const indexItem = slideItemArray.findIndex((element) =>
-    element.classList.contains("is-active")
-  );
-  return indexItem + 1;
 };
 
 const slideBtn = document.querySelectorAll(".slide-btn");
