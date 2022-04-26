@@ -87,28 +87,28 @@ const findIndexItem = () => {
 const slideBtn = document.querySelectorAll(".slide-btn");
 const nextBtn = document.getElementById("js-nextBtn");
 const prevBtn = document.getElementById("js-prevBtn");
-let currentIndexImg = 0;
+let currentImgIndex = 0;
 
 slideBtn.forEach((button) => {
-  prevBtn.disabled = currentIndexImg === 0;
+  prevBtn.disabled = currentImgIndex === 0;
   button.addEventListener("click", (event) => {
     const eventTarget = event.target.parentElement;
     const slideImg = document.querySelectorAll(".slide-img-item");
     document.querySelector(".is-active").classList.remove("is-active");
-    eventTarget.id === "js-nextBtn" ? ++currentIndexImg : --currentIndexImg;
-    slideImg[currentIndexImg].classList.add("is-active");
+    eventTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
+    slideImg[currentImgIndex].classList.add("is-active");
     btnDisabled(slideImg);
     renderActiveNumber(slideImg);
   });
 });
 
 const btnDisabled = (value) => {
-  nextBtn.disabled = currentIndexImg === value.length - 1;
-  prevBtn.disabled = currentIndexImg === 0;
+  nextBtn.disabled = currentImgIndex === value.length - 1;
+  prevBtn.disabled = currentImgIndex === 0;
 };
 
 const renderActiveNumber = (value) => {
   document.getElementById("js-slideNumber").textContent = `${
-    currentIndexImg + 1
+    currentImgIndex + 1
   } / ${value.length}`;
 };
