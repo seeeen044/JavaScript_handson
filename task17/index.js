@@ -52,13 +52,14 @@ const init = async () => {
     removeLoading();
   }
   currentImgIndex = slideImgData.findIndex((v) => v.display);
-  renderSlideImage(slideImgData);
+  renderSlideItem(slideImgData);
   renderSlideNumber(slideImgData);
-
+  addEventListenerForBtn();
+  toggleDisabledOfButton(slideImgData);
 };
 init();
 
-const renderSlideImage = (slideImgData) => {
+const renderSlideItem = (slideImgData) => {
   const slideImgFragment = document.createDocumentFragment();
   for (let i = 0; i < slideImgData.length; i++) {
     const slideImgItem = createElementWithClassName("li", "slide-img-item");
@@ -69,6 +70,22 @@ const renderSlideImage = (slideImgData) => {
     slideImgFragment.appendChild(slideImgItem).appendChild(slideImage);
   }
   slideImgList.appendChild(slideImgFragment);
+  createSlideBtn();
+};
+
+const createSlideBtn = () => {
+  const slideShowItem = document.getElementById("js-slideShowItem");
+  const prevButton = createElementWithClassName("button", "slide-btn");
+  const nextButton = createElementWithClassName("button", "slide-btn");
+  const prevBtnImg = document.createElement("img");
+  const nextBtnImg = document.createElement("img");
+  prevButton.id = "js-prevBtn";
+  nextButton.id = "js-nextBtn";
+  prevBtnImg.src = "./img/prev-arrow.png";
+  nextBtnImg.src = "./img/next-arrow.png";
+  prevButton.appendChild(prevBtnImg);
+  slideShowItem.insertBefore(prevButton, slideShowWrapper);
+  slideShowItem.appendChild(nextButton).appendChild(nextBtnImg);
 };
 
 const renderSlideNumber = (slideImgData) => {
@@ -79,24 +96,26 @@ const renderSlideNumber = (slideImgData) => {
   slideShowContainer.appendChild(slideNumText);
 };
 
-const slideBtn = document.querySelectorAll(".slide-btn");
-const nextBtn = document.getElementById("js-nextBtn");
-const prevBtn = document.getElementById("js-prevBtn");
 let currentImgIndex = 0;
 
-slideBtn.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const eventTarget = event.target.parentElement;
-    const slideImg = document.querySelectorAll(".slide-img-item");
-    document.querySelector(".is-active").classList.remove("is-active");
-    eventTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
-    slideImg[currentImgIndex].classList.add("is-active");
-    btnDisabled(slideImg);
-    renderActiveNumber(slideImg);
+const addEventListenerForBtn = () => {
+  const slideBtn = document.querySelectorAll(".slide-btn");
+  slideBtn.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const eventTarget = event.target.parentElement;
+      const slideImg = document.querySelectorAll(".slide-img-item");
+      document.querySelector(".is-active").classList.remove("is-active");
+      eventTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
+      slideImg[currentImgIndex].classList.add("is-active");
+      toggleDisabledOfButton(slideImg);
+      renderActiveNumber(slideImg);
+    });
   });
-});
+};
 
-const btnDisabled = (slideImgData) => {
+const toggleDisabledOfButton = (slideImgData) => {
+  const nextBtn = document.getElementById("js-nextBtn");
+  const prevBtn = document.getElementById("js-prevBtn");
   nextBtn.disabled = currentImgIndex === slideImgData.length - 1;
   prevBtn.disabled = currentImgIndex === 0;
 };
