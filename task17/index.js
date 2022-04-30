@@ -70,22 +70,20 @@ const renderSlideItem = (slideImgData) => {
     slideImgFragment.appendChild(slideImgItem).appendChild(slideImage);
   }
   slideImgList.appendChild(slideImgFragment);
-  createSlideBtn();
+  renderSlideBtn();
 };
 
-const createSlideBtn = () => {
-  const slideShowItem = document.getElementById("js-slideShowItem");
-  const prevButton = createElementWithClassName("button", "slide-btn");
-  const nextButton = createElementWithClassName("button", "slide-btn");
-  const prevBtnImg = document.createElement("img");
-  const nextBtnImg = document.createElement("img");
-  prevButton.id = "js-prevBtn";
-  nextButton.id = "js-nextBtn";
-  prevBtnImg.src = "./img/prev-arrow.png";
-  nextBtnImg.src = "./img/next-arrow.png";
-  prevButton.appendChild(prevBtnImg);
-  slideShowItem.insertBefore(prevButton, slideShowWrapper);
-  slideShowItem.appendChild(nextButton).appendChild(nextBtnImg);
+const renderSlideBtn = () => {
+  const direction = ["prev", "next"];
+  direction.forEach((direction) => {
+    const button = createElementWithClassName("button", "slide-btn");
+    const buttonImg = document.createElement("img");
+    button.id = `js-${direction}Btn`;
+    buttonImg.src = `./img/${direction}-arrow.png`;
+    button.append(buttonImg);
+    direction === "prev" && slideShowWrapper.before(button);
+    direction === "next" && slideShowWrapper.after(button);
+  });
 };
 
 const renderSlideNumber = (slideImgData) => {
