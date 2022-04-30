@@ -1,0 +1,32 @@
+[
+    {
+        "id" : "55ebb7df-f580-426c-b544-7403c74d7c98", 
+        "display" : true,
+        "img" : "./img/swadle.png",
+        "alt" : "生まれました"
+    },
+    {
+        "id" : "7ec44fc2-4301-4b9e-8a5d-2007a42b0610", 
+        "display" : false,
+        "img" : "./img/crying.png",
+        "alt" : "泣いています"        
+    },
+    {
+        "id" : "233b9f35-3318-4816-9f82-051db9c82189", 
+        "display" : false,
+        "img" : "./img/milk.png",
+        "alt" : "ミルクを飲んでいます"        
+    },
+    {
+        "id" : "f61f67fa-9097-4b9d-a3f5-63e5dd3611ae", 
+        "display" : false,
+        "img" : "./img/highhigh.png",
+        "alt" : "ハイハイしてます"        
+    },
+    {
+        "id" : "4b2a0718-c328-405f-b9c0-780988c6a75f", 
+        "display" : false,
+        "img" : "./img/walk.png",
+        "alt" : "あんよが上手"        
+    }
+]
