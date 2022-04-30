@@ -51,7 +51,7 @@ const init = async () => {
   } finally {
     removeLoading();
   }
-  currentImgIndex = slideImgData.findIndex((v) => v.display);
+  currentImgIndex = slideImgData.findIndex((data) => data.display);
   renderSlideItem(slideImgData);
   renderSlideNumber(slideImgData);
   addEventListenerForBtn();
