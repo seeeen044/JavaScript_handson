@@ -13,3 +13,7 @@ setIntervalを使って実行する
 
 ●自動で切り替わる機能を停止する機能を作る(resetAutoPlay)
 clearIntervalを使って自動で切り替える機能を停止する
+
+●ドットのページネーション・矢印のボタンをそれぞれ連動させる
+ドットのページネーションの最後が"is-active"なら、next方向ボタンはdisable
+ドットのページネーションの最初が"is-active"なら、prev方向ボタンはdisable
