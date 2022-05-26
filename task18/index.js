@@ -55,7 +55,8 @@ const init = async () => {
   renderSlideItem(slideImgData);
   renderPagination(slideImgData);
   renderSlideNumber(slideImgData);
-  addEventListenerForBtn();
+  addEventForBtn();
+  addEventForPagination(slideImgData);
   toggleDisabledOfButton(slideImgData);
 };
 init();
@@ -92,7 +93,8 @@ const renderPagination = (slideImgData) => {
   const paginationFragment = document.createDocumentFragment();
   for (let i = 0; i < slideImgData.length; i++) {
     const paginationItem = createElementWithClassName("li", "pagination-item");
-    slideImgData[i].display && paginationItem.classList.add("is-active");
+    paginationItem.dataset.index = i;
+    slideImgData[i].display && paginationItem.classList.add("is-show");
     paginationFragment.appendChild(paginationList).appendChild(paginationItem);
   }
   slideShowContainer.appendChild(paginationFragment);
@@ -108,7 +110,7 @@ const renderSlideNumber = (slideImgData) => {
 
 let currentImgIndex = 0;
 
-const addEventListenerForBtn = () => {
+const addEventForBtn = () => {
   const slideBtn = document.querySelectorAll(".slide-btn");
   slideBtn.forEach((button) => {
     button.addEventListener("click", (event) => {
@@ -121,6 +123,26 @@ const addEventListenerForBtn = () => {
       renderActiveNumber(slideImg);
     });
   });
+};
+
+const addEventForPagination = (slideImgData) => {
+  const paginations = [...document.querySelectorAll(".pagination-item")];
+
+  paginations.forEach((pagination) => {
+    pagination.addEventListener("click", (e) => {
+      // currentImgIndex = e.target.dataset.num;
+
+      document.querySelector(".is-show").classList.remove("is-show");
+      paginations[e.target.dataset].classList.add("is-show");
+
+      const slideImg = document.querySelectorAll(".slide-img-item");
+      document.querySelector(".is-active").classList.remove("is-active");
+      slideImg[e.target.dataset.num].classList.add("is-active");
+
+      toggleDisabledOfButton(slideImgData);
+      renderActiveNumber(slideImgData);
+    })
+  })
 };
 
 const toggleDisabledOfButton = (slideImgData) => {

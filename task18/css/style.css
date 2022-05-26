@@ -137,6 +137,6 @@ body {
   cursor: pointer;
 }
 
-.pagination-item.is-active {
+.pagination-item.is-show {
   background: rgb(175, 175, 175);
 }
