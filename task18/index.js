@@ -3,6 +3,7 @@ const URL = "https://mocki.io/v1/af7d1b29-da7d-4eba-977b-cdb5caeb2fff";
 const slideShowContainer = document.getElementById("js-slideShowContainer");
 const slideShowWrapper = document.getElementById("js-slideShowWrapper");
 const slideImgList = document.getElementById("js-slideImgList");
+let currentImgIndex = 0;
 
 const createElementWithClassName = (element, name) => {
   const createdElement = document.createElement(element);
@@ -51,14 +52,31 @@ const init = async () => {
   } finally {
     removeLoading();
   }
+  renderSliderContents(slideImgData);
+  autoSlider(slideImgData);
+};
+init();
+
+let autoPlay;
+const autoSlider = (slideImgData) => {
+  autoPlay = setInterval(() => {
+    currentImgIndex < slideImgData.length - 1 ? ++ currentImgIndex : currentImgIndex = 0;
+    initOfSwitchSlide(slideImgData);
+  }, 3000);
+};
+
+const resetAutoSlider = (slideImgData) => {
+  clearInterval(autoPlay);
+  autoSlider(slideImgData);
+};
+
+const renderSliderContents = (slideImgData) => {
   currentImgIndex = slideImgData.findIndex((data) => data.display);
   renderSlideItem(slideImgData);
   renderPagination(slideImgData);
   renderSlideNumber(slideImgData);
   toggleDisabledOfButton(slideImgData);
 };
-init();
-
 
 const renderSlideItem = (slideImgData) => {
   const slideImgFragment = document.createDocumentFragment();
@@ -100,8 +118,6 @@ const renderPagination = (slideImgData) => {
   slideShowContainer.appendChild(paginationFragment);
   addEventForPagination(slideImgData);
 };
-
-let currentImgIndex = 0;
 
 const renderSlideNumber = (slideImgData) => {
   const slideNumText = createElementWithClassName("p", "slide-number");
@@ -149,6 +165,7 @@ const addEventForBtn = (slideImgData) => {
     button.addEventListener("click", (e) => {
       e.currentTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
       initOfSwitchSlide(slideImgData);
+      resetAutoSlider(slideImgData);
     })
   })
 }
@@ -159,6 +176,7 @@ const addEventForPagination = (slideImgData) => {
     pagination.addEventListener("click", (e) => {
       currentImgIndex = Number(e.target.dataset.index);
       initOfSwitchSlide(slideImgData);
+      resetAutoSlider(slideImgData);
     })
   })
 }
