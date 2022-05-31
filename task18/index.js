@@ -55,11 +55,10 @@ const init = async () => {
   renderSlideItem(slideImgData);
   renderPagination(slideImgData);
   renderSlideNumber(slideImgData);
-  addEventForBtn();
-  addEventForPagination(slideImgData);
   toggleDisabledOfButton(slideImgData);
 };
 init();
+
 
 const renderSlideItem = (slideImgData) => {
   const slideImgFragment = document.createDocumentFragment();
@@ -72,10 +71,10 @@ const renderSlideItem = (slideImgData) => {
     slideImgFragment.appendChild(slideImgItem).appendChild(slideImage);
   }
   slideImgList.appendChild(slideImgFragment);
-  renderSlideBtn();
+  renderSlideBtn(slideImgData);
 };
 
-const renderSlideBtn = () => {
+const renderSlideBtn = (slideImgData) => {
   const direction = ["prev", "next"];
   direction.forEach((direction) => {
     const button = createElementWithClassName("button", "slide-btn");
@@ -86,6 +85,7 @@ const renderSlideBtn = () => {
     direction === "prev" && slideShowWrapper.before(button);
     direction === "next" && slideShowWrapper.after(button);
   });
+  addEventForBtn(slideImgData);
 };
 
 const renderPagination = (slideImgData) => {
@@ -98,7 +98,10 @@ const renderPagination = (slideImgData) => {
     paginationFragment.appendChild(paginationList).appendChild(paginationItem);
   }
   slideShowContainer.appendChild(paginationFragment);
+  addEventForPagination(slideImgData);
 };
+
+let currentImgIndex = 0;
 
 const renderSlideNumber = (slideImgData) => {
   const slideNumText = createElementWithClassName("p", "slide-number");
@@ -108,52 +111,55 @@ const renderSlideNumber = (slideImgData) => {
   slideShowContainer.appendChild(slideNumText);
 };
 
-let currentImgIndex = 0;
-
-const addEventForBtn = () => {
-  const slideBtn = document.querySelectorAll(".slide-btn");
-  slideBtn.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const eventTarget = event.target.parentElement;
-      const slideImg = document.querySelectorAll(".slide-img-item");
-      document.querySelector(".is-active").classList.remove("is-active");
-      eventTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
-      slideImg[currentImgIndex].classList.add("is-active");
-      toggleDisabledOfButton(slideImg);
-      renderActiveNumber(slideImg);
-    });
-  });
+const initOfSwitchSlide = (slideImgData) => {
+  changeCurrentNumber(slideImgData);
+  toggleDisabledOfButton(slideImgData);
+  switchSlideImg(currentImgIndex);
+  switchPagination(currentImgIndex);
 };
 
-const addEventForPagination = (slideImgData) => {
-  const paginations = [...document.querySelectorAll(".pagination-item")];
-
-  paginations.forEach((pagination) => {
-    pagination.addEventListener("click", (e) => {
-      // currentImgIndex = e.target.dataset.num;
-
-      document.querySelector(".is-show").classList.remove("is-show");
-      paginations[e.target.dataset].classList.add("is-show");
-
-      const slideImg = document.querySelectorAll(".slide-img-item");
-      document.querySelector(".is-active").classList.remove("is-active");
-      slideImg[e.target.dataset.num].classList.add("is-active");
-
-      toggleDisabledOfButton(slideImgData);
-      renderActiveNumber(slideImgData);
-    })
-  })
-};
+const changeCurrentNumber = (slideImgData) => {
+  document.getElementById("js-slideNumber").textContent = `${currentImgIndex + 1} / ${slideImgData.length}`;
+}
 
 const toggleDisabledOfButton = (slideImgData) => {
   const nextBtn = document.getElementById("js-nextBtn");
   const prevBtn = document.getElementById("js-prevBtn");
-  nextBtn.disabled = currentImgIndex === slideImgData.length - 1;
-  prevBtn.disabled = currentImgIndex === 0;
+  const firstSlideImg = 0;
+  const lastSlideImg = slideImgData.length - 1;
+  nextBtn.disabled = currentImgIndex === lastSlideImg;
+  prevBtn.disabled = currentImgIndex === firstSlideImg;
 };
 
-const renderActiveNumber = (slideImgData) => {
-  document.getElementById("js-slideNumber").textContent = `${
-    currentImgIndex + 1
-  } / ${slideImgData.length}`;
-};
+const switchSlideImg = (currentImgIndex) => {
+  const slideImg = document.querySelectorAll(".slide-img-item");
+  document.querySelector(".is-active").classList.remove("is-active");
+  slideImg[currentImgIndex].classList.add("is-active");
+}
+
+const switchPagination = (currentImgIndex) => {
+  const paginations = document.querySelectorAll(".pagination-item");
+  document.querySelector(".is-show").classList.remove("is-show");
+  paginations[currentImgIndex].classList.add("is-show");
+}
+
+const addEventForBtn = (slideImgData) => {
+  const slideBtn = document.querySelectorAll(".slide-btn");
+  slideBtn.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.currentTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
+      initOfSwitchSlide(slideImgData);
+    })
+  })
+}
+
+const addEventForPagination = (slideImgData) => {
+  const paginations = document.querySelectorAll(".pagination-item");
+  paginations.forEach((pagination) => {
+    pagination.addEventListener("click", (e) => {
+      currentImgIndex = Number(e.target.dataset.index);
+      initOfSwitchSlide(slideImgData);
+    })
+  })
+}
+
