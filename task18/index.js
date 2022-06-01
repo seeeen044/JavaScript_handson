@@ -130,8 +130,8 @@ const renderSlideNumber = (slideImgData) => {
 const initOfSwitchSlide = (slideImgData) => {
   changeCurrentNumber(slideImgData);
   toggleDisabledOfButton(slideImgData);
-  switchSlideImg(currentImgIndex);
-  switchPagination(currentImgIndex);
+  switchSlideImg();
+  switchPagination();
 };
 
 const changeCurrentNumber = (slideImgData) => {
@@ -147,13 +147,13 @@ const toggleDisabledOfButton = (slideImgData) => {
   prevBtn.disabled = currentImgIndex === firstSlideImg;
 };
 
-const switchSlideImg = (currentImgIndex) => {
+const switchSlideImg = () => {
   const slideImg = document.querySelectorAll(".slide-img-item");
   document.querySelector(".is-active").classList.remove("is-active");
   slideImg[currentImgIndex].classList.add("is-active");
 }
 
-const switchPagination = (currentImgIndex) => {
+const switchPagination = () => {
   const paginations = document.querySelectorAll(".pagination-item");
   document.querySelector(".is-show").classList.remove("is-show");
   paginations[currentImgIndex].classList.add("is-show");
