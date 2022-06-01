@@ -73,6 +73,7 @@ const resetAutoSlider = (slideImgData) => {
 const renderSliderContents = (slideImgData) => {
   currentImgIndex = slideImgData.findIndex((data) => data.display);
   renderSlideItem(slideImgData);
+  renderSlideBtn(slideImgData);
   renderPagination(slideImgData);
   renderSlideNumber(slideImgData);
   toggleDisabledOfButton(slideImgData);
@@ -89,7 +90,6 @@ const renderSlideItem = (slideImgData) => {
     slideImgFragment.appendChild(slideImgItem).appendChild(slideImage);
   }
   slideImgList.appendChild(slideImgFragment);
-  renderSlideBtn(slideImgData);
 };
 
 const renderSlideBtn = (slideImgData) => {
