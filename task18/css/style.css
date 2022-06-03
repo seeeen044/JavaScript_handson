@@ -84,7 +84,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-.slide-img-item {
+.slide-image-item {
   z-index: 1;
   position: absolute;
   top: 50%;
@@ -94,7 +94,7 @@ body {
   padding-top: 30px;
   display: none;
 }
-.slide-img-item.is-active {
+.slide-image-item.is-active {
   z-index: 2;
   text-align: center;
   display: block;
@@ -103,7 +103,7 @@ body {
   max-width: 300px;
 }
 
-.slide-btn {
+.slide-button {
   border: none;
   z-index: 10;
   width: auto;
@@ -112,7 +112,7 @@ body {
   cursor: pointer;
 }
 
-.slide-btn:hover,
+.slide-button:hover,
 :disabled {
   opacity: 0.7;
 }
@@ -146,7 +146,7 @@ body {
 
 @media screen and (max-width: 768px) {
   /* スマホ用CSS -------------- */
-  .slide-img-item.is-active {
+  .slide-image-item.is-active {
     max-width: 100%;
   }
 }

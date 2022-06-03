@@ -2,8 +2,8 @@ const endpoint = "https://mocki.io/v1/af7d1b29-da7d-4eba-977b-cdb5caeb2fff";
 
 const slideShowContainer = document.getElementById("js-slideShowContainer");
 const slideShowWrapper = document.getElementById("js-slideShowWrapper");
-const slideImgList = document.getElementById("js-slideImgList");
-let currentImgIndex = 0;
+const slideImageList = document.getElementById("js-slideImageList");
+let currentImageIndex = 0;
 
 const createElementWithClassName = (element, name) => {
   const createdElement = document.createElement(element);
@@ -33,7 +33,7 @@ const getFetchData = async () => {
   return json;
 };
 
-const fetchImgData = () => {
+const fetchImageData = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(getFetchData(endpoint));
@@ -43,140 +43,140 @@ const fetchImgData = () => {
 
 const init = async () => {
   addLoading();
-  let slideImgData;
+  let slideImageData;
   try {
-    slideImgData = await fetchImgData();
+    slideImageData = await fetchImageData();
   } catch (error) {
     console.error(error.message);
     renderErrorMessage("表示することができません");
   } finally {
     removeLoading();
   }
-  renderSliderContents(slideImgData);
-  toggleDisabledOfButton(slideImgData);
-  autoSlider(slideImgData);
+  renderSliderContents(slideImageData);
+  toggleDisabledOfButton(slideImageData);
+  autoSlider(slideImageData);
 };
 init();
 
 let autoPlay;
-const autoSlider = (slideImgData) => {
+const autoSlider = (slideImageData) => {
   autoPlay = setInterval(() => {
-    currentImgIndex < slideImgData.length - 1 ? ++ currentImgIndex : currentImgIndex = 0;
-    initOfSlider(slideImgData);
+    currentImageIndex < slideImageData.length - 1 ? ++ currentImageIndex : currentImageIndex = 0;
+    initOfSlider(slideImageData);
   }, 3000);
 };
 
-const resetAutoSlider = (slideImgData) => {
+const resetAutoSlider = (slideImageData) => {
   clearInterval(autoPlay);
-  autoSlider(slideImgData);
+  autoSlider(slideImageData);
 };
 
-const renderSliderContents = (slideImgData) => {
-  currentImgIndex = slideImgData.findIndex((data) => data.display);
-  renderSlideItem(slideImgData);
-  renderSlideBtn(slideImgData);
-  renderPagination(slideImgData);
-  renderSlideNumber(slideImgData);
+const renderSliderContents = (slideImageData) => {
+  currentImageIndex = slideImageData.findIndex((data) => data.display);
+  renderSlideItem(slideImageData);
+  renderSlideBtn(slideImageData);
+  renderPagination(slideImageData);
+  renderSlideNumber(slideImageData);
 };
 
-const renderSlideItem = (slideImgData) => {
-  const slideImgFragment = document.createDocumentFragment();
-  for (let i = 0; i < slideImgData.length; i++) {
-    const slideImgItemElement = createElementWithClassName("li", "slide-img-item");
+const renderSlideItem = (slideImageData) => {
+  const slideImageFragment = document.createDocumentFragment();
+  for (let i = 0; i < slideImageData.length; i++) {
+    const slideImageItemElement = createElementWithClassName("li", "slide-image-item");
     const slideImageElement = createElementWithClassName("img", "slide-image");
-    slideImageElement.src = slideImgData[i].img;
-    slideImageElement.alt = slideImgData[i].alt;
-    slideImgData[i].display && slideImgItemElement.classList.add("is-active");
-    slideImgFragment.appendChild(slideImgItemElement).appendChild(slideImageElement);
+    slideImageElement.src = slideImageData[i].img;
+    slideImageElement.alt = slideImageData[i].alt;
+    slideImageData[i].display && slideImageItemElement.classList.add("is-active");
+    slideImageFragment.appendChild(slideImageItemElement).appendChild(slideImageElement);
   }
-  slideImgList.appendChild(slideImgFragment);
+  slideImageList.appendChild(slideImageFragment);
 };
 
-const renderSlideBtn = (slideImgData) => {
-  const direction = ["prev", "next"];
-  direction.forEach((direction) => {
-    const buttonElement = createElementWithClassName("button", "slide-btn");
-    const buttonImg = document.createElement("img");
-    buttonElement.id = `js-${direction}Btn`;
-    buttonImg.src = `./img/${direction}-arrow.png`;
-    buttonElement.append(buttonImg);
-    direction === "prev" && slideShowWrapper.before(buttonElement);
+const renderSlideBtn = (slideImageData) => {
+  const directions = ["previous", "next"];
+  directions.forEach((direction) => {
+    const buttonElement = createElementWithClassName("button", "slide-button");
+    const buttonImage = document.createElement("img");
+    buttonElement.id = `js-${direction}Button`;
+    buttonImage.src = `./img/${direction}-arrow.png`;
+    buttonElement.append(buttonImage);
+    direction === "previous" && slideShowWrapper.before(buttonElement);
     direction === "next" && slideShowWrapper.after(buttonElement);
   });
-  addEventForBtn(slideImgData);
+  addEventForButton(slideImageData);
 };
 
-const renderPagination = (slideImgData) => {
+const renderPagination = (slideImageData) => {
   const paginationListElement = createElementWithClassName("ul", "pagination-list");
   const paginationFragment = document.createDocumentFragment();
-  for (let i = 0; i < slideImgData.length; i++) {
+  for (let i = 0; i < slideImageData.length; i++) {
     const paginationItemElement = createElementWithClassName("li", "pagination-item");
     paginationItemElement.dataset.index = i;
-    slideImgData[i].display && paginationItemElement.classList.add("is-show");
+    slideImageData[i].display && paginationItemElement.classList.add("is-show");
     paginationFragment.appendChild(paginationListElement).appendChild(paginationItemElement);
   }
   slideShowContainer.appendChild(paginationFragment);
-  addEventForPagination(slideImgData);
+  addEventForPagination(slideImageData);
 };
 
-const renderSlideNumber = (slideImgData) => {
-  const slideNumTextElement = createElementWithClassName("p", "slide-number");
-  const slideLength = slideImgData.length;
-  slideNumTextElement.id = "js-slideNumber";
-  slideNumTextElement.textContent = `${currentImgIndex + 1} / ${slideLength}`;
-  slideShowContainer.appendChild(slideNumTextElement);
+const renderSlideNumber = (slideImageData) => {
+  const slideNumberTextElement = createElementWithClassName("p", "slide-number");
+  const slideLength = slideImageData.length;
+  slideNumberTextElement.id = "js-slideNumber";
+  slideNumberTextElement.textContent = `${currentImageIndex + 1} / ${slideLength}`;
+  slideShowContainer.appendChild(slideNumberTextElement);
 };
 
-const initOfSlider = (slideImgData) => {
-  changeCurrentNumber(slideImgData);
-  toggleDisabledOfButton(slideImgData);
+const initOfSlider = (slideImageData) => {
+  changeCurrentNumber(slideImageData);
+  toggleDisabledOfButton(slideImageData);
   passIsActiveClass();
   passIsShowClass();
 };
 
-const changeCurrentNumber = (slideImgData) => {
-  document.getElementById("js-slideNumber").textContent = `${currentImgIndex + 1} / ${slideImgData.length}`;
+const changeCurrentNumber = (slideImageData) => {
+  document.getElementById("js-slideNumber").textContent = `${currentImageIndex + 1} / ${slideImageData.length}`;
 }
 
-const toggleDisabledOfButton = (slideImgData) => {
-  const nextBtn = document.getElementById("js-nextBtn");
-  const prevBtn = document.getElementById("js-prevBtn");
-  const firstSlideImg = 0;
-  const lastSlideImg = slideImgData.length - 1;
-  nextBtn.disabled = currentImgIndex === lastSlideImg;
-  prevBtn.disabled = currentImgIndex === firstSlideImg;
+const toggleDisabledOfButton = (slideImageData) => {
+  const nextButton = document.getElementById("js-nextButton");
+  const previousButton = document.getElementById("js-previousButton");
+  const firstSlideImage = 0;
+  const lastSlideImage = slideImageData.length - 1;
+  nextButton.disabled = currentImageIndex === lastSlideImage;
+  previousButton.disabled = currentImageIndex === firstSlideImage;
 };
 
 const passIsActiveClass = () => {
-  const slideImg = document.querySelectorAll(".slide-img-item");
+  const slideImage = document.querySelectorAll(".slide-image-item");
   document.querySelector(".is-active").classList.remove("is-active");
-  slideImg[currentImgIndex].classList.add("is-active");
+  slideImage[currentImageIndex].classList.add("is-active");
 }
 
 const passIsShowClass = () => {
   const paginations = document.querySelectorAll(".pagination-item");
   document.querySelector(".is-show").classList.remove("is-show");
-  paginations[currentImgIndex].classList.add("is-show");
+  paginations[currentImageIndex].classList.add("is-show");
 }
 
-const addEventForBtn = (slideImgData) => {
-  const slideBtn = document.querySelectorAll(".slide-btn");
-  slideBtn.forEach((button) => {
+const addEventForButton = (slideImageData) => {
+  const slideButton = document.querySelectorAll(".slide-button");
+  slideButton.forEach((button) => {
     button.addEventListener("click", (e) => {
-      e.currentTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
-      initOfSlider(slideImgData);
-      resetAutoSlider(slideImgData);
+      e.currentTarget.id === "js-nextButton" ? ++currentImageIndex : --currentImageIndex;
+      initOfSlider(slideImageData);
+      resetAutoSlider(slideImageData);
     })
   })
 }
 
-const addEventForPagination = (slideImgData) => {
+const addEventForPagination = (slideImageData) => {
   const paginations = document.querySelectorAll(".pagination-item");
   paginations.forEach((pagination) => {
     pagination.addEventListener("click", (e) => {
-      currentImgIndex = Number(e.target.dataset.index);
-      initOfSlider(slideImgData);
-      resetAutoSlider(slideImgData);
+      currentImageIndex = Number(e.target.dataset.index);
+      initOfSlider(slideImageData);
+      resetAutoSlider(slideImageData);
     })
   })
 }
