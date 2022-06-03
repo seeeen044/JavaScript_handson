@@ -12,9 +12,9 @@ const createElementWithClassName = (element, name) => {
 };
 
 const addLoading = () => {
-  const loadingPlace = createElementWithClassName("div", "loader");
-  loadingPlace.id = "js-loadingPlace";
-  slideShowWrapper.appendChild(loadingPlace);
+  const loadingPlaceElement = createElementWithClassName("div", "loader");
+  loadingPlaceElement.id = "js-loadingPlace";
+  slideShowWrapper.appendChild(loadingPlaceElement);
 };
 
 const removeLoading = () => document.getElementById("js-loadingPlace").remove();
@@ -82,12 +82,12 @@ const renderSliderContents = (slideImgData) => {
 const renderSlideItem = (slideImgData) => {
   const slideImgFragment = document.createDocumentFragment();
   for (let i = 0; i < slideImgData.length; i++) {
-    const slideImgItem = createElementWithClassName("li", "slide-img-item");
-    const slideImage = createElementWithClassName("img", "slide-image");
-    slideImage.src = slideImgData[i].img;
-    slideImage.alt = slideImgData[i].alt;
-    slideImgData[i].display && slideImgItem.classList.add("is-active");
-    slideImgFragment.appendChild(slideImgItem).appendChild(slideImage);
+    const slideImgItemElement = createElementWithClassName("li", "slide-img-item");
+    const slideImageElement = createElementWithClassName("img", "slide-image");
+    slideImageElement.src = slideImgData[i].img;
+    slideImageElement.alt = slideImgData[i].alt;
+    slideImgData[i].display && slideImgItemElement.classList.add("is-active");
+    slideImgFragment.appendChild(slideImgItemElement).appendChild(slideImageElement);
   }
   slideImgList.appendChild(slideImgFragment);
 };
@@ -95,36 +95,36 @@ const renderSlideItem = (slideImgData) => {
 const renderSlideBtn = (slideImgData) => {
   const direction = ["prev", "next"];
   direction.forEach((direction) => {
-    const button = createElementWithClassName("button", "slide-btn");
+    const buttonElement = createElementWithClassName("button", "slide-btn");
     const buttonImg = document.createElement("img");
-    button.id = `js-${direction}Btn`;
+    buttonElement.id = `js-${direction}Btn`;
     buttonImg.src = `./img/${direction}-arrow.png`;
-    button.append(buttonImg);
-    direction === "prev" && slideShowWrapper.before(button);
-    direction === "next" && slideShowWrapper.after(button);
+    buttonElement.append(buttonImg);
+    direction === "prev" && slideShowWrapper.before(buttonElement);
+    direction === "next" && slideShowWrapper.after(buttonElement);
   });
   addEventForBtn(slideImgData);
 };
 
 const renderPagination = (slideImgData) => {
-  const paginationList = createElementWithClassName("ul", "pagination-list");
+  const paginationListElement = createElementWithClassName("ul", "pagination-list");
   const paginationFragment = document.createDocumentFragment();
   for (let i = 0; i < slideImgData.length; i++) {
-    const paginationItem = createElementWithClassName("li", "pagination-item");
-    paginationItem.dataset.index = i;
-    slideImgData[i].display && paginationItem.classList.add("is-show");
-    paginationFragment.appendChild(paginationList).appendChild(paginationItem);
+    const paginationItemElement = createElementWithClassName("li", "pagination-item");
+    paginationItemElement.dataset.index = i;
+    slideImgData[i].display && paginationItemElement.classList.add("is-show");
+    paginationFragment.appendChild(paginationListElement).appendChild(paginationItemElement);
   }
   slideShowContainer.appendChild(paginationFragment);
   addEventForPagination(slideImgData);
 };
 
 const renderSlideNumber = (slideImgData) => {
-  const slideNumText = createElementWithClassName("p", "slide-number");
+  const slideNumTextElement = createElementWithClassName("p", "slide-number");
   const slideLength = slideImgData.length;
-  slideNumText.id = "js-slideNumber";
-  slideNumText.textContent = `${currentImgIndex + 1} / ${slideLength}`;
-  slideShowContainer.appendChild(slideNumText);
+  slideNumTextElement.id = "js-slideNumber";
+  slideNumTextElement.textContent = `${currentImgIndex + 1} / ${slideLength}`;
+  slideShowContainer.appendChild(slideNumTextElement);
 };
 
 const initOfSwitchSlide = (slideImgData) => {
