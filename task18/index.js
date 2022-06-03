@@ -62,7 +62,7 @@ let autoPlay;
 const autoSlider = (slideImgData) => {
   autoPlay = setInterval(() => {
     currentImgIndex < slideImgData.length - 1 ? ++ currentImgIndex : currentImgIndex = 0;
-    initOfSwitchSlide(slideImgData);
+    initOfSlider(slideImgData);
   }, 3000);
 };
 
@@ -127,11 +127,11 @@ const renderSlideNumber = (slideImgData) => {
   slideShowContainer.appendChild(slideNumTextElement);
 };
 
-const initOfSwitchSlide = (slideImgData) => {
+const initOfSlider = (slideImgData) => {
   changeCurrentNumber(slideImgData);
   toggleDisabledOfButton(slideImgData);
-  switchSlideImg();
-  switchPagination();
+  passIsActiveClass();
+  passIsShowClass();
 };
 
 const changeCurrentNumber = (slideImgData) => {
@@ -147,13 +147,13 @@ const toggleDisabledOfButton = (slideImgData) => {
   prevBtn.disabled = currentImgIndex === firstSlideImg;
 };
 
-const switchSlideImg = () => {
+const passIsActiveClass = () => {
   const slideImg = document.querySelectorAll(".slide-img-item");
   document.querySelector(".is-active").classList.remove("is-active");
   slideImg[currentImgIndex].classList.add("is-active");
 }
 
-const switchPagination = () => {
+const passIsShowClass = () => {
   const paginations = document.querySelectorAll(".pagination-item");
   document.querySelector(".is-show").classList.remove("is-show");
   paginations[currentImgIndex].classList.add("is-show");
@@ -164,7 +164,7 @@ const addEventForBtn = (slideImgData) => {
   slideBtn.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.currentTarget.id === "js-nextBtn" ? ++currentImgIndex : --currentImgIndex;
-      initOfSwitchSlide(slideImgData);
+      initOfSlider(slideImgData);
       resetAutoSlider(slideImgData);
     })
   })
@@ -175,7 +175,7 @@ const addEventForPagination = (slideImgData) => {
   paginations.forEach((pagination) => {
     pagination.addEventListener("click", (e) => {
       currentImgIndex = Number(e.target.dataset.index);
-      initOfSwitchSlide(slideImgData);
+      initOfSlider(slideImgData);
       resetAutoSlider(slideImgData);
     })
   })
