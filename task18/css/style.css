@@ -148,9 +148,5 @@ body {
   /* スマホ用CSS -------------- */
   .slide-img-item.is-active {
     max-width: 100%;
-    /* top: 10%; */
   }
-  /* .slide-image {
-    max-width: 100%;
-  } */
 }

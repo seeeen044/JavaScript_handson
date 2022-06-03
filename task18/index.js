@@ -53,6 +53,7 @@ const init = async () => {
     removeLoading();
   }
   renderSliderContents(slideImgData);
+  toggleDisabledOfButton(slideImgData);
   autoSlider(slideImgData);
 };
 init();
@@ -76,7 +77,6 @@ const renderSliderContents = (slideImgData) => {
   renderSlideBtn(slideImgData);
   renderPagination(slideImgData);
   renderSlideNumber(slideImgData);
-  toggleDisabledOfButton(slideImgData);
 };
 
 const renderSlideItem = (slideImgData) => {
