@@ -1,4 +1,4 @@
-const URL = "https://mocki.io/v1/af7d1b29-da7d-4eba-977b-cdb5caeb2fff";
+const endpoint = "https://mocki.io/v1/af7d1b29-da7d-4eba-977b-cdb5caeb2fff";
 
 const slideShowContainer = document.getElementById("js-slideShowContainer");
 const slideShowWrapper = document.getElementById("js-slideShowWrapper");
@@ -24,7 +24,7 @@ const renderErrorMessage = (errorMessage) => {
 };
 
 const getFetchData = async () => {
-  const response = await fetch(URL);
+  const response = await fetch(endpoint);
   if (!response.ok) {
     console.error(`${response.status}:${response.statusText}`);
     renderErrorMessage("問題が発生し表示することができません。");
@@ -36,7 +36,7 @@ const getFetchData = async () => {
 const fetchImgData = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(getFetchData(URL));
+      resolve(getFetchData(endpoint));
     }, 3000);
   });
 };

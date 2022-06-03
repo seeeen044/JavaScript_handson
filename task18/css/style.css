@@ -82,12 +82,14 @@ body {
   background: #fff;
   list-style: none;
   position: relative;
+  overflow: hidden;
 }
 .slide-img-item {
   z-index: 1;
   position: absolute;
-  top: 0;
-  right: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 300px;
   padding-top: 30px;
   display: none;
@@ -104,8 +106,9 @@ body {
 .slide-btn {
   border: none;
   z-index: 10;
-  width: 30px;
+  width: auto;
   height: 30px;
+  overflow: visible;
   cursor: pointer;
 }
 
@@ -139,4 +142,15 @@ body {
 
 .pagination-item.is-show {
   background: rgb(175, 175, 175);
+}
+
+@media screen and (max-width: 768px) {
+  /* スマホ用CSS -------------- */
+  .slide-img-item.is-active {
+    max-width: 100%;
+    /* top: 10%; */
+  }
+  /* .slide-image {
+    max-width: 100%;
+  } */
 }
