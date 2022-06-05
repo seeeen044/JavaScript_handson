@@ -147,6 +147,6 @@ body {
 @media screen and (max-width: 768px) {
   /* スマホ用CSS -------------- */
   .slide-image-item.is-active {
-    max-width: 100%;
+    min-width: 100%;
   }
 }
