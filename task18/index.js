@@ -1,4 +1,4 @@
-const endpoint = "https://mocki.io/v1/af7d1b29-da7d-4eba-977b-cdb5caeb2fff";
+const endpoint = "https://mocki.io/v1/fc890b98-dee0-4eb6-9e83-8c25364dcaa9";
 
 const slideShowContainer = document.getElementById("js-slideShowContainer");
 const slideShowWrapper = document.getElementById("js-slideShowWrapper");
@@ -72,7 +72,6 @@ const resetAutoSlider = (slideImageData) => {
 };
 
 const renderSliderContents = (slideImageData) => {
-  currentImageIndex = slideImageData.findIndex((data) => data.display);
   renderSlideItem(slideImageData);
   renderSlideBtn(slideImageData);
   renderPagination(slideImageData);
@@ -86,7 +85,7 @@ const renderSlideItem = (slideImageData) => {
     const slideImageElement = createElementWithClassName("img", "slide-image");
     slideImageElement.src = slideImageData[i].img;
     slideImageElement.alt = slideImageData[i].alt;
-    slideImageData[i].display && slideImageItemElement.classList.add("is-active");
+    i === 0 && slideImageItemElement.classList.add("is-active");
     slideImageFragment.appendChild(slideImageItemElement).appendChild(slideImageElement);
   }
   slideImageList.appendChild(slideImageFragment);
@@ -112,7 +111,7 @@ const renderPagination = (slideImageData) => {
   for (let i = 0; i < slideImageData.length; i++) {
     const paginationItemElement = createElementWithClassName("li", "pagination-item");
     paginationItemElement.dataset.index = i;
-    slideImageData[i].display && paginationItemElement.classList.add("is-show");
+    i === 0 && paginationItemElement.classList.add("is-show");
     paginationFragment.appendChild(paginationListElement).appendChild(paginationItemElement);
   }
   slideShowContainer.appendChild(paginationFragment);
