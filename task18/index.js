@@ -41,7 +41,7 @@ const fetchImageData = () => {
   });
 };
 
-const init = async () => {
+const initialize = async () => {
   addLoading();
   let slideImageData;
   try {
@@ -53,10 +53,12 @@ const init = async () => {
     removeLoading();
   }
   renderSliderContents(slideImageData);
-  toggleDisabledOfButton(slideImageData);
+  document.getElementById("js-previousButton").disabled = slideImageData[0]
+  // toggleDisabledOfButton(slideImageData);
+  // 初期設定されていれば関数を実行する必要がなくなる。
   autoSlider(slideImageData);
 };
-init();
+initialize();
 
 let autoPlay;
 const autoSlider = (slideImageData) => {
@@ -163,7 +165,7 @@ const addEventForButton = (slideImageData) => {
   slideButton.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.currentTarget.id === "js-nextButton" ? ++currentImageIndex : --currentImageIndex;
-      initOfSlider(slideImageData);
+      changeSlider(slideImageData);
       resetAutoSlider(slideImageData);
     })
   })
@@ -174,7 +176,7 @@ const addEventForPagination = (slideImageData) => {
   paginations.forEach((pagination) => {
     pagination.addEventListener("click", (e) => {
       currentImageIndex = Number(e.target.dataset.index);
-      initOfSlider(slideImageData);
+      changeSlider(slideImageData);
       resetAutoSlider(slideImageData);
     })
   })
