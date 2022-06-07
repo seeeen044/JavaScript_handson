@@ -62,7 +62,7 @@ let autoPlay;
 const autoSlider = (slideImageData) => {
   autoPlay = setInterval(() => {
     currentImageIndex < slideImageData.length - 1 ? ++ currentImageIndex : currentImageIndex = 0;
-    initOfSlider(slideImageData);
+    changeSlider(slideImageData);
   }, 3000);
 };
 
@@ -126,11 +126,11 @@ const renderSlideNumber = (slideImageData) => {
   slideShowContainer.appendChild(slideNumberTextElement);
 };
 
-const initOfSlider = (slideImageData) => {
+const changeSlider = (slideImageData) => {
   changeCurrentNumber(slideImageData);
   toggleDisabledOfButton(slideImageData);
-  passIsActiveClass();
-  passIsShowClass();
+  changeImage();
+  changePagination();
 };
 
 const changeCurrentNumber = (slideImageData) => {
@@ -146,13 +146,13 @@ const toggleDisabledOfButton = (slideImageData) => {
   previousButton.disabled = currentImageIndex === firstSlideImage;
 };
 
-const passIsActiveClass = () => {
+const changeImage = () => {
   const slideImage = document.querySelectorAll(".slide-image-item");
   document.querySelector(".is-active").classList.remove("is-active");
   slideImage[currentImageIndex].classList.add("is-active");
 }
 
-const passIsShowClass = () => {
+const changePagination = () => {
   const paginations = document.querySelectorAll(".pagination-item");
   document.querySelector(".is-show").classList.remove("is-show");
   paginations[currentImageIndex].classList.add("is-show");
