@@ -54,8 +54,6 @@ const initialize = async () => {
   }
   renderSliderContents(slideImageData);
   document.getElementById("js-previousButton").disabled = slideImageData[0]
-  // toggleDisabledOfButton(slideImageData);
-  // 初期設定されていれば関数を実行する必要がなくなる。
   autoSlider(slideImageData);
 };
 initialize();
