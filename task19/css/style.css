@@ -66,26 +66,6 @@
 
 
 /* slider */
-/* .slideshow-container {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.slideshow-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
-
-/* .slideshow-wrapper {
-  width: 600px;
-  height: 400px;
-  margin: 0 auto;
-  background: #fff;
-  list-style: none;
-  position: relative;
-  overflow: hidden;
-} */
 
 .slide-image-item {
   z-index: 1;
