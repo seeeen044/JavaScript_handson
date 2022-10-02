@@ -2,8 +2,8 @@ import { createElementWithClassName } from "../utils/createElement";
 
 export const addLoading = (parent) => {
     const loadingPlaceElement = createElementWithClassName("div", "loader");
-    loadingPlaceElement.id = "loadingPlace";
+    loadingPlaceElement.id = `${parent.id}-loading`;
     parent.appendChild(loadingPlaceElement);
 };
   
-export  const removeLoading = () => document.getElementById("loadingPlace").remove();
+export  const removeLoading = (parent) => document.getElementById(`${parent.id}-loading`).remove();

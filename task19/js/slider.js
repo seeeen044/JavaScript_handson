@@ -1,4 +1,4 @@
-import '../style.css'
+import '../css/style.css'
 import { createElementWithClassName } from "./utils/createElement";
 import { addLoading } from "./module/loading";
 import { removeLoading } from "./module/loading";
@@ -38,7 +38,7 @@ const initialize = async () => {
     console.error(error.message);
     renderErrorMessage("表示することができません");
   } finally {
-    removeLoading();
+    removeLoading(slideShowWrapper);
   }
   renderSliderContents(slideImageData);
   document.getElementById("js-previousButton").disabled = slideImageData[0]

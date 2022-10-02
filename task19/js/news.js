@@ -1,4 +1,4 @@
-import '../style.css'
+import '../css/style.css'
 import { createElementWithClassName } from "./utils/createElement";
 import { addLoading } from "./module/loading";
 import { removeLoading } from "./module/loading";
@@ -34,7 +34,7 @@ const initialize = async () => {
     console.error(error);
     tab.textContent = "データを読み込めませんでした";
   } finally {
-    removeLoading();
+    removeLoading(tabWrapper);
   }
   renderTabMenu(newsData);
   renderTabContainer(newsData);
