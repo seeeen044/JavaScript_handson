@@ -11,8 +11,9 @@ const tabWrapper = document.getElementById("js-tabWrapper");
 const tab = document.getElementById("js-tabMenu");
 
 const getFetchData = async () => {
+  let response
   try {
-    const response = await fetch(endpointForNews);
+    response = await fetch(endpointForNews);
     if (!response.ok) {
       console.error(`${response.status}:${response.statusText}`);
       renderErrorMessage(tabWrapper, "問題が発生し表示することができません。");
