@@ -95,8 +95,10 @@
   cursor: pointer;
 }
 
-.slide-button:hover,
-:disabled {
+.slide-button:hover {
+  opacity: 0.7;
+}
+.slide-button:disabled {
   opacity: 0.7;
   cursor: not-allowed
 }

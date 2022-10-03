@@ -1,8 +1,8 @@
 import '../css/style.css'
 import { createElementWithClassName } from "./utils/createElement";
-import { addLoading } from "./module/loading";
-import { removeLoading } from "./module/loading";
-import { renderErrorMessage } from "./module/error";
+import { addLoading } from "./modules/loading";
+import { removeLoading } from "./modules/loading";
+import { renderErrorMessage } from "./modules/error";
 import { format, differenceInCalendarDays } from "date-fns";
 
 const endpointForNews = "https://mocki.io/v1/1a552372-eb0e-4bf6-855a-24b5d59e6399";
@@ -122,8 +122,8 @@ const renderCommentCount = (article, parent) => {
 const getDiffDays = (articlePostedDate) => {
   const postedDate = format(new Date(articlePostedDate), "yyyy, MM, dd");
   const today = format(new Date(), "yyyy, MM, dd");
-  const elapsed = differenceInCalendarDays(new Date(today), new Date(postedDate));
-  return elapsed;
+  const diffDays = differenceInCalendarDays(new Date(today), new Date(postedDate));
+  return diffDays;
 };
 
 const createNewArrivals = () => {

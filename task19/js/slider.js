@@ -1,8 +1,8 @@
 import '../css/style.css'
 import { createElementWithClassName } from "./utils/createElement";
-import { addLoading } from "./module/loading";
-import { removeLoading } from "./module/loading";
-import { renderErrorMessage } from "./module/error";
+import { addLoading } from "./modules/loading";
+import { removeLoading } from "./modules/loading";
+import { renderErrorMessage } from "./modules/error";
 
 const endpointForSlider = "https://mocki.io/v1/fc890b98-dee0-4eb6-9e83-8c25364dcaa9";
 
