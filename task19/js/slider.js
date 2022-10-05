@@ -73,7 +73,7 @@ const renderSlideItem = (slideImageData) => {
     const slideImageElement = createElementWithClassName("img", "slide-image");
     slideImageElement.src = slideImageData[i].img;
     slideImageElement.alt = slideImageData[i].alt;
-    i === 0 && slideImageItemElement.classList.add("is-active");
+    i === 0 && slideImageItemElement.classList.add("is-show");
     slideImageFragment.appendChild(slideImageItemElement).appendChild(slideImageElement);
   }
   slideImageList.appendChild(slideImageFragment);
@@ -117,8 +117,8 @@ const renderSlideNumber = (slideImageData) => {
 const changeSlider = (slideImageData) => {
   changeCurrentNumber(slideImageData);
   toggleDisabledOfButton(slideImageData);
-  changeImage();
-  changePagination();
+  changeActiveItem(".slide-image-item"); 
+  changeActiveItem(".pagination-item"); 
 };
 
 const changeCurrentNumber = (slideImageData) => {
@@ -134,17 +134,11 @@ const toggleDisabledOfButton = (slideImageData) => {
   previousButton.disabled = currentImageIndex === firstSlideImage;
 };
 
-const changeImage = () => {
-  const slideImage = document.querySelectorAll(".slide-image-item");
-  document.querySelector(".is-active").classList.remove("is-active");
-  slideImage[currentImageIndex].classList.add("is-active");
-}
-
-const changePagination = () => {
-  const paginations = document.querySelectorAll(".pagination-item");
-  document.querySelector(".is-show").classList.remove("is-show");
-  paginations[currentImageIndex].classList.add("is-show");
-}
+const changeActiveItem = (item) => {
+  const items = document.querySelectorAll(item);
+  document.querySelector(`${item}.is-show`).classList.remove("is-show");
+  items[currentImageIndex].classList.add("is-show");
+};
 
 const addEventForButton = (slideImageData) => {
   const slideButton = document.querySelectorAll(".slide-button");
