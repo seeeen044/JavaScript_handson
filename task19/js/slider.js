@@ -36,7 +36,7 @@ const initialize = async () => {
     slideImageData = await fetchImageData();
   } catch (error) {
     console.error(error.message);
-    renderErrorMessage("表示することができません");
+    renderErrorMessage(slideShowWrapper, "表示することができません");
   } finally {
     removeLoading(slideShowWrapper);
   }

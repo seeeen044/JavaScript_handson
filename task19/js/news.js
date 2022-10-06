@@ -33,7 +33,7 @@ const initialize = async () => {
     newsData = await getFetchData();
   } catch (error) {
     console.error(error);
-    tab.textContent = "データを読み込めませんでした";
+    renderErrorMessage(tab, "データを読み込めませんでした");
   } finally {
     removeLoading(tabWrapper);
   }
