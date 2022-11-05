@@ -51,11 +51,11 @@ const renderTableContents = (userContents, userContentsData) => {
     const tableElement = document.createElement("table");
     tableElement.classList.add("mt-20", "mx-auto", "w-3/5");
 
-    parent.appendChild(tableElement).appendChild(createTableHeader(userContents));
-    parent.appendChild(tableElement).appendChild(createTableBody(userContentsData));
+    parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userContents));
+    parent.appendChild(tableElement).appendChild(getCreatedTableBody(userContentsData));
 };
 
-const createTableHeader = (userContents) => {
+const getCreatedTableHeader = (userContents) => {
     const theadElement = document.createElement("thead");
     const tableRowElement = document.createElement("tr");
     const tableHeaderFragment = document.createDocumentFragment();
@@ -70,7 +70,7 @@ const createTableHeader = (userContents) => {
     return theadElement;
 }
 
-const createTableBody = (userContentsData) => {
+const getCreatedTableBody = (userContentsData) => {
     const tbodyElement = document.createElement("tbody");
     const tableBodyFragment = document.createDocumentFragment();
     for(const user of userContentsData){
