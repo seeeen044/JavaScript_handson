@@ -36,33 +36,33 @@ const initialize = async () => {
     } finally {
         removeLoading(parent);
     }
-    renderTableContents(userContents, userContentsData);
+    renderTableContents(userTableColumn, userContentsData);
 };
 initialize();
 
-const userContents =  {
+const userTableColumn =  {
     "userId" : "ID",
     "userName" : "名前",
     "userGender" : "性別",
     "userAge" : "年齢"
 };
 
-const renderTableContents = (userContents, userContentsData) => {
+const renderTableContents = (userTableColumn, userContentsData) => {
     const tableElement = document.createElement("table");
     tableElement.classList.add("mt-20", "mx-auto", "w-3/5");
 
-    parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userContents));
+    parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userTableColumn));
     parent.appendChild(tableElement).appendChild(getCreatedTableBody(userContentsData));
 };
 
-const getCreatedTableHeader = (userContents) => {
+const getCreatedTableHeader = (userTableColumn) => {
     const theadElement = document.createElement("thead");
     const tableRowElement = document.createElement("tr");
     const tableHeaderFragment = document.createDocumentFragment();
-    for(const content of Object.values(userContents)){
+    for(const column of Object.values(userTableColumn)){
         const tableHeaderElement = createElementWithClassName("th", "table-header");
         tableHeaderElement.classList.add("bg-gray-900", "text-white");
-        tableHeaderElement.textContent = content;
+        tableHeaderElement.textContent = column;
 
         tableHeaderFragment.appendChild(tableHeaderElement);
     }
@@ -75,9 +75,9 @@ const getCreatedTableBody = (userContentsData) => {
     const tableBodyFragment = document.createDocumentFragment();
     for(const user of userContentsData){
         const tableRowElement = document.createElement("tr");
-        for(const content of Object.keys(userContents)){
+        for(const column of Object.keys(userTableColumn)){
             const tableDataElement = createElementWithClassName("td", "table-data");
-            tableDataElement.textContent = user[content];
+            tableDataElement.textContent = user[column];
 
             tableBodyFragment.appendChild(tableRowElement).appendChild(tableDataElement);
         }
