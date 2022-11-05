@@ -10,12 +10,13 @@ const parent = document.getElementById("js-parent");
 
 const getFetchData = async () => {
     const response = await fetch(endpoint);
+    // const response = await fetch("https://mocki.io/v1/f12ae2d1-310d-4120-8749-47773d65e236");//空配列
+
     if (!response.ok){
         console.error(`$(response:status):$(response:statusText)`);
         renderErrorMessage(parent, "問題が発生し表示することができません。");
     }
-    const json = await response.json();
-    return json.data;
+    return await response.json();
 };
 
 const fetchTableData = () => {
@@ -23,6 +24,9 @@ const fetchTableData = () => {
         setTimeout(() => {
             resolve(getFetchData(endpoint));
         }, 3000);
+        // setTimeout(() => {
+        //     resolve(getFetchData("https://mocki.io/v1/f12ae2d1-310d-4120-8749-47773d65e236"));
+        // }, 3000);//空配列
     });
 };
 
@@ -30,7 +34,11 @@ const initialize = async () => {
     renderLoading(parent);
     let userContentsData
     try {
-        userContentsData = await fetchTableData();
+        const json = await fetchTableData();
+        userContentsData = json.data;
+        if(userContentsData.length === 0){
+            renderErrorMessage(parent, "データがありません。");
+        }
     } catch(error) {
         renderErrorMessage(parent, "問題が発生し表示することができません。");
     } finally {
