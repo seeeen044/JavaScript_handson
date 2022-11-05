@@ -4,7 +4,7 @@ import { renderLoading } from './modules/loading'
 import { removeLoading } from './modules/loading'
 import { renderErrorMessage } from './modules/error'
 
-const endpoint = "https://mocki.io/v1/7afded4f-46ed-4535-b770-997abc352aea";
+const endpoint = "https://mocki.io/v1/159d72ba-bd6b-429f-a28c-713eeaba9f72";
 
 const parent = document.getElementById("js-parent");
 
@@ -49,10 +49,10 @@ const initialize = async () => {
 initialize();
 
 const userTableColumn =  {
-    "userId" : "ID",
-    "userName" : "名前",
-    "userGender" : "性別",
-    "userAge" : "年齢"
+    "id" : "ID",
+    "name" : "名前",
+    "gender" : "性別",
+    "age" : "年齢"
 };
 
 const renderTableContents = (userTableColumn, userContentsData) => {

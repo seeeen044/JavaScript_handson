@@ -2,34 +2,34 @@
     "data" : [
         {
             "ID" : "514600a9-f003-4e8e-ab20-4a0c961442c9",
-            "userId" : "3",
-            "userName" : "たなか",
-            "userGender" : "男性",
-            "userAge" : "25"
+            "id" : "3",
+            "name" : "たなか",
+            "gender" : "男性",
+            "age" : "25"
         },{
             "ID" : "f10f9b3e-7009-4dba-8c91-87a409710c1f",
-            "userId" : "5",
-            "userName" : "えのもと",
-            "userGender" : "女性",
-            "userAge" : "36"
+            "id" : "5",
+            "name" : "えのもと",
+            "gender" : "女性",
+            "age" : "36"
         },{
             "ID" : "fe1be04a-3e19-43e8-a309-f540da363938",
-            "userId" : "1",
-            "userName" : "やまだ",
-            "userGender" : "男性",
-            "userAge" : "32"
+            "id" : "1",
+            "name" : "やまだ",
+            "gender" : "男性",
+            "age" : "32"
         },{
             "ID" : "ceedc5b7-ec7d-4a93-8536-f173dc2a2055",
-            "userId" : "4",
-            "userName" : "あんどう",
-            "userGender" : "女性",
-            "userAge" : "48"
+            "id" : "4",
+            "name" : "あんどう",
+            "gender" : "女性",
+            "age" : "48"
         },{
             "ID" : "461d4b70-0943-47db-948b-563ac7ebb811",
-            "userId" : "2",
-            "userName" : "さとう",
-            "userGender" : "女性",
-            "userAge" : "18"
+            "id" : "2",
+            "name" : "さとう",
+            "gender" : "女性",
+            "age" : "18"
         }
     ]
 }
