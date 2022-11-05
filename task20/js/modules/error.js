@@ -1,4 +1,3 @@
 export const renderErrorMessage = (parent, errorMessage) => {
-    parent.textContent = errorMessage;
-  };
-  
+  parent.textContent = errorMessage;
+};
