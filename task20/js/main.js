@@ -51,8 +51,7 @@ const renderTableContents = (userTableColumn, userContentsData) => {
     const tableElement = document.createElement("table");
     tableElement.classList.add("mt-20", "mx-auto", "w-3/5");
 
-    parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userTableColumn));
-    parent.appendChild(tableElement).appendChild(getCreatedTableBody(userContentsData));
+    parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userTableColumn)).after(getCreatedTableBody(userContentsData));
 };
 
 const getCreatedTableHeader = (userTableColumn) => {
