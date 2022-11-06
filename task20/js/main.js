@@ -4,13 +4,11 @@ import { renderLoading } from './modules/loading'
 import { removeLoading } from './modules/loading'
 import { renderErrorMessage } from './modules/error'
 
-const endpoint = "https://mocki.io/v1/159d72ba-bd6b-429f-a28c-713eeaba9f72";
 
 const parent = document.getElementById("js-parent");
 
-const getFetchData = async () => {
+const getFetchData = async (endpoint) => {
     const response = await fetch(endpoint);
-    // const response = await fetch("https://mocki.io/v1/f12ae2d1-310d-4120-8749-47773d65e236");//空配列
 
     if (!response.ok){
         console.error(`$(response:status):$(response:statusText)`);
@@ -22,7 +20,7 @@ const getFetchData = async () => {
 const fetchTableData = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(getFetchData(endpoint));
+            resolve(getFetchData("https://mocki.io/v1/159d72ba-bd6b-429f-a28c-713eeaba9f72"));
         }, 3000);
         // setTimeout(() => {
         //     resolve(getFetchData("https://mocki.io/v1/f12ae2d1-310d-4120-8749-47773d65e236"));
