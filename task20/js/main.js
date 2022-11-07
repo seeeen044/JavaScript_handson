@@ -11,7 +11,7 @@ const getFetchData = async (endpoint) => {
     const response = await fetch(endpoint);
 
     if (!response.ok){
-        console.error(`$(response:status):$(response:statusText)`);
+        console.error(`${response.status}:${response.statusText}`);
         renderErrorMessage(parent, "問題が発生し表示することができません。");
     }
     return await response.json();
@@ -25,6 +25,9 @@ const fetchTableData = () => {
         // setTimeout(() => {
         //     resolve(getFetchData("https://mocki.io/v1/f12ae2d1-310d-4120-8749-47773d65e236"));
         // }, 3000);//空配列
+        // setTimeout((resolve) => {
+        //     getFetchData("https://httpstat.us/503")
+        // }, 3000);
     });
 };
 
