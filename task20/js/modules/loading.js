@@ -2,8 +2,9 @@ import { createElementWithClassName } from "../utils/createElement";
 
 export const renderLoading = (parent) => {
     const loadingPlaceElement = createElementWithClassName("div", "loader");
-    loadingPlaceElement.id = `${parent.id}-loading`;
+    loadingPlaceElement.id = "js-loading";
+
     parent.appendChild(loadingPlaceElement);
 };
   
-export  const removeLoading = (parent) => document.getElementById(`${parent.id}-loading`).remove();
+export  const removeLoading = () => document.getElementById("js-loading").remove();

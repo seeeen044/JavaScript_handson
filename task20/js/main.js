@@ -4,6 +4,7 @@ import { renderLoading } from './modules/loading'
 import { removeLoading } from './modules/loading'
 import { renderErrorMessage } from './modules/error'
 
+const body = document.getElementById("js-body");
 
 const parent = document.getElementById("js-parent");
 
@@ -31,23 +32,29 @@ const fetchTableData = () => {
     });
 };
 
-const initialize = async () => {
-    renderLoading(parent);
-    let userContentsData
+const getUserData = async () => {
+    renderLoading(body);
     try {
         const json = await fetchTableData();
-        userContentsData = json.data;
-        if(userContentsData.length === 0){
+        const data= json.data;
+        if(data.length === 0){
             renderErrorMessage(parent, "データがありません。");
         }
+        return data;
     } catch(error) {
         renderErrorMessage(parent, "問題が発生し表示することができません。");
     } finally {
-        removeLoading(parent);
+        removeLoading();
     }    
-    renderTableContents(userTableColumn, userContentsData);
 };
+
+const initialize = async () => {
+    const userContentsData = await getUserData();
+    userContentsData && renderTableContents(userTableColumn, userContentsData);
+}
 initialize();
+
+
 
 const userTableColumn =  {
     "id" : "ID",
