@@ -39,6 +39,7 @@ const getUserData = async () => {
         const data= json.data;
         if(data.length === 0){
             renderErrorMessage(parent, "データがありません。");
+            return;
         }
         return data;
     } catch(error) {
