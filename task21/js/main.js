@@ -5,7 +5,6 @@ import { removeLoading } from './modules/loading'
 import { renderErrorMessage } from './modules/error'
 
 const body = document.getElementById("js-body");
-
 const parent = document.getElementById("js-parent");
 
 const getFetchData = async (endpoint) => {
@@ -55,8 +54,6 @@ const initialize = async () => {
 }
 initialize();
 
-
-
 const userTableColumn =  {
     "id" : "ID",
     "name" : "名前",
@@ -79,7 +76,7 @@ const getCreatedTableHeader = (userTableColumn) => {
         const tableHeaderElement = createElementWithClassName("th", "table-header");
         tableHeaderElement.classList.add("bg-gray-900", "text-white");
         tableHeaderElement.textContent = column;
-
+        column === "ID" && tableHeaderElement.appendChild(getCreatedSortButton());
         tableHeaderFragment.appendChild(tableHeaderElement);
     }
     theadElement.appendChild(tableRowElement).appendChild(tableHeaderFragment);
@@ -102,3 +99,19 @@ const getCreatedTableBody = (userContentsData) => {
     return tbodyElement;
 };
 
+const sort =  {
+    Both : "default",
+    Asc : "asc",
+    Desc : "desc"
+};
+
+const getCreatedSortButton = () => {
+    const sortButton = document.createElement("button");
+    const sortImage = document.createElement("img");
+    sortButton.id = "js-sortButton";
+    sortButton.dataset.status = "default";
+    sortImage.src = "../img/both.svg"
+    sortImage.classList.add("w-4", "h-4");
+    sortButton.appendChild(sortImage);
+    return sortButton;
+};
