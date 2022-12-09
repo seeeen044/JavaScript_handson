@@ -51,6 +51,7 @@ const getUserData = async () => {
 const initialize = async () => {
     const userContentsData = await getUserData();
     userContentsData && renderTableContents(userTableColumn, userContentsData);
+    addEventForSortButton(userContentsData);
 }
 initialize();
 
@@ -63,6 +64,7 @@ const userTableColumn =  {
 
 const renderTableContents = (userTableColumn, userContentsData) => {
     const tableElement = document.createElement("table");
+
     tableElement.classList.add("mt-20", "mx-auto", "w-3/5");
 
     parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userTableColumn)).after(getCreatedTableBody(userContentsData));
@@ -85,13 +87,13 @@ const getCreatedTableHeader = (userTableColumn) => {
 
 const getCreatedTableBody = (userContentsData) => {
     const tbodyElement = document.createElement("tbody");
+    tbodyElement.id = "js-tableBody";
     const tableBodyFragment = document.createDocumentFragment();
     for(const user of userContentsData){
         const tableRowElement = document.createElement("tr");
         for(const column of Object.keys(userTableColumn)){
             const tableDataElement = createElementWithClassName("td", "table-data");
             tableDataElement.textContent = user[column];
-
             tableBodyFragment.appendChild(tableRowElement).appendChild(tableDataElement);
         }
     }
@@ -99,19 +101,54 @@ const getCreatedTableBody = (userContentsData) => {
     return tbodyElement;
 };
 
-const sort =  {
-    Both : "default",
-    Asc : "asc",
-    Desc : "desc"
-};
-
 const getCreatedSortButton = () => {
     const sortButton = document.createElement("button");
-    const sortImage = document.createElement("img");
+    const sortImage = createElementWithClassName("img", "sort-image");
     sortButton.id = "js-sortButton";
-    sortButton.dataset.status = "default";
-    sortImage.src = "../img/both.svg"
-    sortImage.classList.add("w-4", "h-4");
+    sortImage.dataset.status = "default";
     sortButton.appendChild(sortImage);
     return sortButton;
 };
+
+const addEventForSortButton = (userContentsData) => {
+    const sortButton = document.getElementById("js-sortButton");
+    sortButton.addEventListener('click', (e) => {
+        const nextStatus = changeSortStatus(e.target.dataset.status);
+        e.target.dataset.status = nextStatus;
+
+        sortContetns(userContentsData, nextStatus);        
+    })
+}
+
+const changeSortStatus = (status) => {
+    switch(status){
+        case "default":
+            return "asc";
+        case "asc":
+            return "desc";
+        case "desc":
+            return "default";
+        default:
+            return "default";
+    }
+}
+
+const renderTableData = (userContentsData) => {
+    document.getElementById("js-tableBody").remove();
+    const table = document.querySelector("table");
+    table.appendChild(getCreatedTableBody(userContentsData));
+};
+
+const sortContetns = (userContentsData, status) => {
+    const cloneUserData = [...userContentsData];
+    if(status === "default") return renderTableData(userContentsData);
+    switch(status){
+        case "asc":
+            cloneUserData.sort((a, b) => a.id - b.id);
+            renderTableData(cloneUserData);
+        break;
+        case "desc":
+            cloneUserData.sort((a, b) => b.id - a.id);
+            renderTableData(cloneUserData);
+    }
+}
