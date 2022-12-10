@@ -127,7 +127,6 @@ const changeSortStatus = (status) => {
         case "asc":
             return "desc";
         case "desc":
-            return "default";
         default:
             return "default";
     }
@@ -150,5 +149,6 @@ const sortContetns = (userContentsData, status) => {
         case "desc":
             cloneUserData.sort((a, b) => b.id - a.id);
             renderTableData(cloneUserData);
+        break;
     }
 }
