@@ -22,12 +22,6 @@ const fetchTableData = () => {
         setTimeout(() => {
             resolve(getFetchData("https://mocki.io/v1/159d72ba-bd6b-429f-a28c-713eeaba9f72"));
         }, 3000);
-        // setTimeout(() => {
-        //     resolve(getFetchData("https://mocki.io/v1/f12ae2d1-310d-4120-8749-47773d65e236"));
-        // }, 3000);//空配列
-        // setTimeout(() => {
-        //     resolve(getFetchData("https://httpstat.us/503"));
-        // }, 3000);//503error
     });
 };
 
