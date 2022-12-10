@@ -134,7 +134,6 @@ const renderTableData = (userContentsData) => {
 
 const sortContents = (userContentsData, status) => {
     const cloneUserData = [...userContentsData];
-    if(status === "default") return renderTableData(userContentsData);
     switch(status){
         case "asc":
             cloneUserData.sort((a, b) => a.id - b.id);
@@ -144,5 +143,7 @@ const sortContents = (userContentsData, status) => {
             cloneUserData.sort((a, b) => b.id - a.id);
             renderTableData(cloneUserData);
         break;
+        default:
+            return renderTableData(userContentsData);
     }
 }
