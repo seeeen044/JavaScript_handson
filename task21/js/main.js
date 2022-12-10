@@ -110,7 +110,7 @@ const addEventForSortButton = (userContentsData) => {
         const nextStatus = changeSortStatus(e.target.dataset.status);
         e.target.dataset.status = nextStatus;
 
-        sortContetns(userContentsData, nextStatus);        
+        sortContents(userContentsData, nextStatus);        
     })
 }
 
@@ -132,7 +132,7 @@ const renderTableData = (userContentsData) => {
     table.appendChild(getCreatedTableBody(userContentsData));
 };
 
-const sortContetns = (userContentsData, status) => {
+const sortContents = (userContentsData, status) => {
     const cloneUserData = [...userContentsData];
     if(status === "default") return renderTableData(userContentsData);
     switch(status){
