@@ -45,7 +45,6 @@ const getUserData = async () => {
 const initialize = async () => {
     const userContentsData = await getUserData();
     userContentsData && renderTableContents(userTableColumn, userContentsData);
-    addEventForSortButton(userContentsData);
 }
 initialize();
 
@@ -61,6 +60,8 @@ const renderTableContents = (userTableColumn, userContentsData) => {
     tableElement.classList.add("mt-20", "mx-auto", "w-3/5");
 
     parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userTableColumn)).after(getCreatedTableBody(userContentsData));
+
+    addEventForSortButton(userContentsData);
 };
 
 const getCreatedTableHeader = (userTableColumn) => {
