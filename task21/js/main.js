@@ -58,7 +58,6 @@ const userTableColumn =  {
 
 const renderTableContents = (userTableColumn, userContentsData) => {
     const tableElement = document.createElement("table");
-
     tableElement.classList.add("mt-20", "mx-auto", "w-3/5");
 
     parent.appendChild(tableElement).appendChild(getCreatedTableHeader(userTableColumn)).after(getCreatedTableBody(userContentsData));
@@ -70,9 +69,10 @@ const getCreatedTableHeader = (userTableColumn) => {
     const tableHeaderFragment = document.createDocumentFragment();
     for(const column of Object.values(userTableColumn)){
         const tableHeaderElement = createElementWithClassName("th", "table-header");
+        const renderSortButton = getCreatedSortButton();
         tableHeaderElement.classList.add("bg-gray-900", "text-white");
         tableHeaderElement.textContent = column;
-        column === "ID" && tableHeaderElement.appendChild(getCreatedSortButton());
+        column === "ID" && tableHeaderElement.appendChild(renderSortButton);
         tableHeaderFragment.appendChild(tableHeaderElement);
     }
     theadElement.appendChild(tableRowElement).appendChild(tableHeaderFragment);
