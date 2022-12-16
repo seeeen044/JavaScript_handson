@@ -70,11 +70,11 @@ const getCreatedTableHeader = (userTableColumn) => {
     const tableHeaderFragment = document.createDocumentFragment();
     for(const column of Object.values(userTableColumn)){
         const tableHeaderElement = createElementWithClassName("th", "table-header");
-        const columnId = column === "ID";
+        const isColumnId = column === "ID";
         const renderSortButton = getCreatedSortButton();
         tableHeaderElement.classList.add("bg-gray-900", "text-white");
         tableHeaderElement.textContent = column;
-        columnId && tableHeaderElement.appendChild(renderSortButton);
+        isColumnId && tableHeaderElement.appendChild(renderSortButton);
         tableHeaderFragment.appendChild(tableHeaderElement);
     }
     theadElement.appendChild(tableRowElement).appendChild(tableHeaderFragment);
