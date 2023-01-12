@@ -68,13 +68,16 @@ const getCreatedTableHeader = (userTableColumn) => {
     const theadElement = document.createElement("thead");
     const tableRowElement = document.createElement("tr");
     const tableHeaderFragment = document.createDocumentFragment();
-    for(const column of Object.values(userTableColumn)){
+    const sortTarget = ["id", "age"];
+    for(const [columnKey, columnValue] of Object.entries(userTableColumn)){
         const tableHeaderElement = createElementWithClassName("th", "table-header");
-        const isSortCategory = column === "ID" || column === "年齢";
-        const renderSortButton = getCreatedSortButton();
+        const renderSortButtons = getCreatedSortButtons(columnKey);
         tableHeaderElement.classList.add("bg-gray-900", "text-white");
-        tableHeaderElement.textContent = column;
-        isSortCategory && tableHeaderElement.appendChild(renderSortButton);
+        tableHeaderElement.textContent = columnValue;
+
+        if (sortTarget.includes(columnKey)){
+            tableHeaderElement.appendChild(renderSortButtons);
+        }
         tableHeaderFragment.appendChild(tableHeaderElement);
     }
     theadElement.appendChild(tableRowElement).appendChild(tableHeaderFragment);
@@ -97,26 +100,14 @@ const getCreatedTableBody = (userContentsData) => {
     return tbodyElement;
 };
 
-const getCreatedSortButton = () => {
+const getCreatedSortButtons = (columnKey) => {
     const sortButton = createElementWithClassName("button", "js-sortButton");
     const sortImage = createElementWithClassName("img", "sort-image");
+    sortButton.id = `${columnKey}`;
     sortImage.dataset.status = "default";
     sortButton.appendChild(sortImage);
     return sortButton;
 };
-
-const addEventForSortButton = (userContentsData) => {
-    const sortButtons = document.querySelectorAll(".js-sortButton");
-    sortButtons.forEach((button) => {
-        button.addEventListener('click', (e) => {
-            const nextStatus = changeSortStatus(e.target.dataset.status);
-            e.target.dataset.status = nextStatus;
-    
-            sortContents(userContentsData, nextStatus);        
-        })
-    })
-    
-}
 
 const changeSortStatus = (status) => {
     switch(status){
@@ -130,21 +121,33 @@ const changeSortStatus = (status) => {
     }
 }
 
+const addEventForSortButton = (userContentsData) => {
+    const sortButtons = document.querySelectorAll(".js-sortButton");
+    sortButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const nextStatus = changeSortStatus(e.target.dataset.status);
+            e.target.dataset.status = nextStatus;
+            button = e.currentTarget.id;
+            sortContents(button, userContentsData, nextStatus);        
+        });
+    });
+}
+
 const renderTableData = (userContentsData) => {
     document.getElementById("js-tableBody").remove();
     const table = document.querySelector("table");
     table.appendChild(getCreatedTableBody(userContentsData));
 };
 
-const sortContents = (userContentsData, status) => {
+const sortContents = (button, userContentsData,status) => {
     const cloneUserData = [...userContentsData];
     switch(status){
         case "asc":
-            cloneUserData.sort((a, b) => a.id - b.id);
+            cloneUserData.sort((a, b) => a[button] - b[button]);
             renderTableData(cloneUserData);
         break;
         case "desc":
-            cloneUserData.sort((a, b) => b.id - a.id);
+            cloneUserData.sort((a, b) => b[button] - a[button]);
             renderTableData(cloneUserData);
         break;
         default:
