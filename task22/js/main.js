@@ -72,6 +72,7 @@ const getCreatedTableHeader = (userTableColumn) => {
     for(const [columnKey, columnValue] of Object.entries(userTableColumn)){
         const tableHeaderElement = createElementWithClassName("th", "table-header");
         const renderSortButtons = getCreatedSortButtons(columnKey);
+
         tableHeaderElement.classList.add("bg-gray-900", "text-white");
         tableHeaderElement.textContent = columnValue;
 
@@ -104,6 +105,7 @@ const getCreatedSortButtons = (columnKey) => {
     const sortButton = createElementWithClassName("button", "js-sortButton");
     const sortImage = createElementWithClassName("img", "sort-image");
     sortButton.id = `${columnKey}`;
+
     sortImage.dataset.status = "default";
     sortButton.appendChild(sortImage);
     return sortButton;
