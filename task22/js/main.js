@@ -104,6 +104,8 @@ const getCreatedSortButtons = (columnKey) => {
     const sortImage = createElementWithClassName("img", "sort-image");
     sortButton.id = `${columnKey}`;
     sortImage.dataset.status = "default";
+    sortImage.src = "../img/both.svg"
+    sortImage.alt = "defalt-image";
     sortButton.appendChild(sortImage);
     return sortButton;
 };
@@ -124,10 +126,10 @@ const addEventForSortButton = (userContentsData) => {
     const sortButtons = document.querySelectorAll(".js-sortButton");
     sortButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
-            const nextStatus = changeSortStatus(e.target.dataset.status);
+            const nextStatus = changeSortStatus(e.target.dataset.status, button);
             e.target.dataset.status = nextStatus;
-            button = e.currentTarget.id;
-            sortContents(button, userContentsData, nextStatus);        
+            const targetId = e.currentTarget.id;
+            sortContents(targetId, userContentsData, nextStatus);        
         });
     });
 }
@@ -138,15 +140,15 @@ const renderTableData = (userContentsData) => {
     table.appendChild(getCreatedTableBody(userContentsData));
 };
 
-const sortContents = (button, userContentsData,status) => {
+const sortContents = (targetColum, userContentsData,status) => {
     const cloneUserData = [...userContentsData];
     switch(status){
         case "asc":
-            cloneUserData.sort((a, b) => a[button] - b[button]);
+            cloneUserData.sort((a, b) => a[targetColum] - b[targetColum]);
             renderTableData(cloneUserData);
         break;
         case "desc":
-            cloneUserData.sort((a, b) => b[button] - a[button]);
+            cloneUserData.sort((a, b) => b[targetColum] - a[targetColum]);
             renderTableData(cloneUserData);
         break;
         default:
