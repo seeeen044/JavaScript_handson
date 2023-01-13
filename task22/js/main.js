@@ -71,12 +71,11 @@ const getCreatedTableHeader = (userTableColumn) => {
     const sortTarget = ["id", "age"];
     for(const [columnKey, columnValue] of Object.entries(userTableColumn)){
         const tableHeaderElement = createElementWithClassName("th", "table-header");
-        const renderSortButtons = getCreatedSortButtons(columnKey);
         tableHeaderElement.classList.add("bg-gray-900", "text-white");
         tableHeaderElement.textContent = columnValue;
 
         if (sortTarget.includes(columnKey)){
-            tableHeaderElement.appendChild(renderSortButtons);
+            tableHeaderElement.appendChild(getCreatedSortButtons(columnKey));
         }
         tableHeaderFragment.appendChild(tableHeaderElement);
     }
