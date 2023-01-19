@@ -9,6 +9,7 @@ const parent = document.getElementById("js-parent");
 
 const getFetchData = async (endpoint) => {
   const response = await fetch(endpoint);
+
   if (!response.ok) {
     console.error(`${response.status}:${response.statusText}`);
     renderErrorMessage(parent, "問題が発生し表示することができません。");
