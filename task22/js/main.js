@@ -9,6 +9,7 @@ const parent = document.getElementById("js-parent");
 
 const getFetchData = async (endpoint) => {
   const response = await fetch(endpoint);
+
   if (!response.ok) {
     console.error(`${response.status}:${response.statusText}`);
     renderErrorMessage(parent, "問題が発生し表示することができません。");
@@ -129,7 +130,7 @@ const changeSortStatus = (status) => {
   }
 };
 
-const notTargetIsDefault = (target, nextStatus) => {
+const defaultSettingForSortButton = (target, nextStatus) => {
   const notTarget = [...document.querySelectorAll(".sort-image")].filter(
     (column) => column !== target
   );
@@ -148,7 +149,7 @@ const addEventForSortButton = (userContentsData) => {
       e.target.dataset.status = nextStatus;
       const targetId = e.currentTarget.id;
       sortContents(targetId, userContentsData, nextStatus);
-      notTargetIsDefault(e.target, nextStatus);
+      defaultSettingForSortButton(e.target, nextStatus);
     });
   });
 };
@@ -159,15 +160,15 @@ const renderTableData = (userContentsData) => {
   table.appendChild(getCreatedTableBody(userContentsData));
 };
 
-const sortContents = (targetColum, userContentsData, status) => {
+const sortContents = (targetColumn, userContentsData, status) => {
   const cloneUserData = [...userContentsData];
   switch (status) {
     case "asc":
-      cloneUserData.sort((a, b) => a[targetColum] - b[targetColum]);
+      cloneUserData.sort((a, b) => a[targetColumn] - b[targetColumn]);
       renderTableData(cloneUserData);
       break;
     case "desc":
-      cloneUserData.sort((a, b) => b[targetColum] - a[targetColum]);
+      cloneUserData.sort((a, b) => b[targetColumn] - a[targetColumn]);
       renderTableData(cloneUserData);
       break;
     default:
