@@ -1,13 +1,16 @@
+
 import "../css/style.css";
 import { createElementWithClassName } from "./utils/createElement";
 import { renderLoading } from "./modules/loading";
 import { removeLoading } from "./modules/loading";
 import { renderErrorMessage } from "./modules/error";
 
+
 const body = document.getElementById("js-body");
 const parent = document.getElementById("js-parent");
 
 const getFetchData = async (endpoint) => {
+
   const response = await fetch(endpoint);
 
   if (!response.ok) {
@@ -175,3 +178,4 @@ const sortContents = (targetColum, userContentsData, status) => {
       return renderTableData(userContentsData);
   }
 };
+
