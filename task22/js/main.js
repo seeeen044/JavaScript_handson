@@ -136,6 +136,8 @@ const defaultSettingForSortButton = (target, nextStatus) => {
   notTarget.forEach((column) => {
     if (nextStatus !== "default") {
       column.dataset.status = "default";
+      column.src = "../img/both.svg";
+      column.alt = "both-image";
     }
   });
 };
