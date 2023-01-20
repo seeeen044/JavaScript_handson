@@ -142,26 +142,21 @@ const defaultSettingForSortButton = (target, nextStatus) => {
   });
 };
 
-const configForSortButton = (target, nextStatus) => {
-  const targetButton = [...document.querySelectorAll(".sort-image")].filter((column) => column === target);
-  targetButton.forEach((column) => {
-    if(nextStatus === "asc") {
-      column.src = "../img/asc.svg";
-      column.alt = "asc-image";
-      return;
-    }
-    if(nextStatus === "desc") {
-      column.src = "../img/desc.svg";
-      column.alt = "desc-image";
-      return;
-    }
-    if(nextStatus === "default"){
-      column.src = "../img/both.svg";
-      column.alt = "both-image";
-      return;
-    }
-  })
-}
+const configForSortButton = (target, status) => {
+  switch (status) {
+    case "asc":
+      target.src = "../img/asc.svg";
+      target.alt = "asc-image";
+      break;
+    case "desc":
+      target.src = "../img/desc.svg";
+      target.alt = "desc-image";
+      break;
+    case "default":
+      target.src = "../img/both.svg";
+      target.alt = "both-image";
+  }
+};
 
 const addEventForSortButton = (userContentsData) => {
   const sortButtons = document.querySelectorAll(".js-sortButton");
@@ -172,7 +167,7 @@ const addEventForSortButton = (userContentsData) => {
       const targetId = e.currentTarget.id;
       sortContents(targetId, userContentsData, nextStatus);
       defaultSettingForSortButton(e.target, nextStatus);
-      configForSortButton(e.target, nextStatus)
+      configForSortButton(e.target, nextStatus);
     });
   });
 };
