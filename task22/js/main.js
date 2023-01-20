@@ -152,7 +152,7 @@ const configForSortButton = (target, status) => {
       target.src = "../img/desc.svg";
       target.alt = "desc-image";
       break;
-    case "default":
+    default:
       target.src = "../img/both.svg";
       target.alt = "both-image";
       break;
