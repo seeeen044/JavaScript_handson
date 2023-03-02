@@ -28,19 +28,9 @@ const options = {
 
 const checkedvalue = ([entry]) => {
     if(entry.isIntersecting){
-        settingInputValue();
-    } 
-};
-
-const settingInputValue = () => {
-    const getMailAdress = document.getElementById("js-getMailAdress").value;
-    const getPassWord = document.getElementById("js-getPassWord").value;
-    if(getMailAdress.trim() && getPassWord.trim()){
         checkBox.checked = true;
         checkBox.disabled = false;
-    } else {
-        alert("ログインに必要な項目を入力して下さい");
-    }
+    } 
 };
 
 const observer = new IntersectionObserver(checkedvalue, options);
