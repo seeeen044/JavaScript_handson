@@ -9,15 +9,9 @@ const closeModalText = document.getElementById("js-modalCloseText");
 const checkBox = document.getElementById("js-checkBox");
 const login = document.getElementById("js-login");
 
-const createModal = () => {
+modalPlace.addEventListener("click", () => {
     modalWrapper.classList.remove('hidden');
-    modalWrapper.classList.add("fixed", "inset-0", "flex",  "justify-center", "items-center", "z-50", "bg-gray-700", "bg-opacity-95")
-    modal.classList.add("max-w-screen-sm", "h-96", "p-4", "bg-white", "overflow-y-auto", "rounded-lg")
-    closeModal.classList.add("flex", "justify-center", "items-center", "p-6", "hover-item")
-    closeModalText.classList.add("hover-text")
-}
-
-modalPlace.addEventListener("click", createModal);
+});
 closeModal.addEventListener("click", () => {
     modalWrapper.classList.add('hidden')
 });
