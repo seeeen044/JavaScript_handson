@@ -62,26 +62,6 @@
   }
 }
 
-/* .modal-wrapper {
-  display: none;
-} */
-
-/* .modal-wrapper {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.modal {
-  max-width: 600px;
-  height: 400px;
-  padding: 16px;
-  background-color: white;
-  overflow: scroll; 
-} */
 
 .hover-item {
   text-decoration: none;
