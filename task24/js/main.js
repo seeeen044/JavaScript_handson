@@ -1,7 +1,6 @@
 import "../css/style.css";
 
 const modalWrapper = document.getElementById("js-modalContents");
-const modalContents = document.getElementById('js-modalContents');
 const modalPlace = document.getElementById("js-modalPlace");
 const closeModal = document.getElementById("js-modalClose");
 const checkBox = document.getElementById("js-checkBox");
@@ -14,8 +13,14 @@ closeModal.addEventListener("click", () => {
     modalWrapper.classList.add('hidden')
 });
 
+modalWrapper.addEventListener("click", (e) => {
+    if(!e.target.closest('#js-modal')){
+        modalWrapper.classList.add('hidden');
+    }
+})
+
 const options = {
-    root: modalContents,
+    root: modalWrapper,
   }
 
 const checkedValue = ([entry]) => {
