@@ -3,6 +3,7 @@ import "../css/style.css";
 const modalWrapper = document.getElementById("js-modalContents");
 const modalPlace = document.getElementById("js-modalPlace");
 const closeModal = document.getElementById("js-modalClose");
+const closeModalButton = document.getElementById("js-modalCloseButton");
 const checkBox = document.getElementById("js-checkBox");
 const login = document.getElementById("js-login");
 
@@ -11,6 +12,9 @@ modalPlace.addEventListener("click", () => {
 });
 closeModal.addEventListener("click", () => {
     modalWrapper.classList.add('hidden')
+});
+closeModalButton.addEventListener("click", () => {
+    modalWrapper.classList.add('hidden');
 });
 
 modalWrapper.addEventListener("click", (e) => {
