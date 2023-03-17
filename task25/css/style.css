@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hover-item {
+  text-decoration: none;
+}
+
+.hover-text {
+  position: relative;
+  z-index: 60;
+  cursor: pointer;
+}
+
+.hover-text:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0%;
+  height: 2px;
+  background: black;
+  z-index: -60;
+  transition: all 0.5s;
+}
+
+.hover-item:hover .hover-text:after {
+  width: 100%;
+}
+
+.login-button:hover {
+  opacity: .8;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.close-button {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  position:absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.close-button::before, 
+.close-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width:3px;
+  height: 22px;
+  border-radius: 2.5px;
+  background: #414b5a;
+}
+
+.close-button::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.close-button::after {
+  transform: translate(-50%,-50%) rotate(-45deg)
+}
