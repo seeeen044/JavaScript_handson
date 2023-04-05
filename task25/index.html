@@ -12,34 +12,36 @@
   </head>
   <body>
     <section class="flex items-center justify-center min-h-screen">
-      <form action="post w-96">
+      <form action="post" class="w-96">
         <h1 class="mb-8 text-3xl text-center">👋 Welcome!</h1>
-        <div class="my-4" id="js-userName">
-          <label for="user-name" class="block mt-1">ユーザー名 </label>
+        <div class="my-4">
+          <label for="name" class="block mt-1">ユーザー名 </label>
           <input
-            id="user-name"
+            id="name"
             type="name"
             name="name"
             placeholder="user-name"
             class="border border-solid border-gray-500 rounded-md w-80 p-1"
             required
           />
+          <span class="block text-sm text-red-600"></span>
         </div>
-        <div class="my-4" id="js-email">
-          <label for="user-email" class="block mt-1">メールアドレス</label>
+        <div class="my-4">
+          <label for="mail" class="block mt-1">メールアドレス</label>
           <input
-            id="user-email"
-            type="email"
-            name="email"
+            id="mail"
+            type="mail"
+            name="mail"
             placeholder="sample@sample.com"
             class="block border border-solid border-gray-500 rounded-md w-80 p-1"
             required
           />
+          <span class="block text-sm text-red-600"></span>
         </div>
-        <div class="my-4" id="js-passWord">
-          <label for="user-password" class="block mt-1">パスワード</label>
+        <div class="my-4">
+          <label for="password" class="block mt-1">パスワード</label>
           <input
-            id="user-password"
+            id="password"
             type="password"
             placeholder="英数字8文字以上"
             class="block border border-solid border-gray-500 rounded-md w-80 p-1"
@@ -48,6 +50,7 @@
             maxlength="12"
             required
           />
+          <span class="block text-sm text-red-600"></span>
         </div>
         <div class="my-4">
           <input
@@ -69,7 +72,7 @@
         <div
           class="my-8 mx-auto text-center w-52 rounded-md bg-yellow-500 p-3 login-button"
         >
-          <a href="" id="js-login" class="block text-white">ログイン</a>
+          <button href="" id="js-login" class="text-white" disabled>ログイン</button>
         </div>
       </form>
     </section>

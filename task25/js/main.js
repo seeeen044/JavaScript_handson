@@ -1,5 +1,4 @@
 import "../css/style.css";
-import { createElementWithClassName } from "./utils/createElement";
 
 const modalWrapper = document.getElementById("js-modalContents");
 const modalPlace = document.getElementById("js-modalPlace");
@@ -7,39 +6,65 @@ const closeModal = document.getElementById("js-modalClose");
 const closeModalButton = document.getElementById("js-modalCloseButton");
 const checkBox = document.getElementById("js-checkBox");
 const login = document.getElementById("js-login");
+const name = document.getElementById("name");
+const mail = document.getElementById("mail");
+const password = document.getElementById("password");
 
-const renderErrorMessage = (parent, errorMessage, element) => {
-    const errorText = document.createElement("p"); 
-    errorText.classList.add("text-red-600", "text-sm");
-    errorText.textContent = errorMessage;
-    element.classList.add("border-red-600");
-    parent.append(errorText);
-}
-
-const addValidationForUserName = () => {
-    const userNameError = document.getElementById("js-userName");
-    const userName = document.getElementById("user-name");
-    if(!userName.value.match(/^([a-zA-Z0-9]{1,16})$/)){
-        renderErrorMessage(userNameError, "半角英数字16文字以内で入力してください", userName);
-    }
-}
-
-const addValidationForEMail = () => {
-    const emailError = document.getElementById("js-email");
-    const email = document.getElementById("user-email");
-    if(!email.value.match(/.+@.+\..+/)){
-        renderErrorMessage(emailError, "メールアドレスをご確認ください", email);
-    }
+const validationStatus = {
+    name : false ,
+    mail : false ,
+    password : false ,
 };
 
-const addValidationForPassWord = () => {
-    const passWordError = document.getElementById("js-passWord");
-    const passWord = document.getElementById("user-password");
-    if(!passWord.value.match(/^([a-zA-Z0-9]{8,12})$/)){
-        renderErrorMessage(passWordError, "半角英数字8文字以上12文字以内で入力してください", passWord);
+const validations =  {
+    name : {
+        maxLength : 16,
+        minLength : 2,
+        validation : (value) => value.length > validations.name.minLength && value.length < validations.name.maxLength,
+        errorMessage : "ユーザー名は2文字以上15文字以下にしてください。",
+    } ,
+    mail : {
+        validation : (value) => /.+@.+\..+/.test(value),
+        errorMessage : "メールアドレスの形式になっていません。",
+    } ,
+    password : {
+        validation : (value) => /^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9.?\/-]{8,12}$/.test(value) ,
+        errorMessage : "8文字以上の大小の英数字を交ぜたものにしてください。",
     }
-};
+}
 
+const settingValidation = (isValid, target) => {
+    if(isValid) {
+        target.classList.add("isvalid");
+        target.classList.remove("invalid");
+        target.nextElementSibling.textContent = "";
+        validationStatus[target.id] = true;
+    } else {
+        target.classList.add("invalid");
+        target.classList.remove("isvalid");
+        target.nextElementSibling.textContent = validations[target.id].errorMessage;
+        validationStatus[target.id] = false;
+    }
+}
+
+const checkEventForValid = (e) => {
+    const target = e.target;
+    const value = target.value.trim();
+    const inputValue = validations[target.id].validation(value);
+    settingValidation(inputValue, target);
+    checkedAllIsValidAndInputValue();
+}
+
+name.addEventListener("blur", checkEventForValid);
+mail.addEventListener("blur", checkEventForValid);
+password.addEventListener("blur", checkEventForValid);
+
+const checkedAllIsValidAndInputValue = () => {
+    const invalid = document.querySelectorAll(".invalid");
+    const isValidStatus = invalid.length === 0;
+    
+    login.disabled = isValidStatus && checkBox.checked ? false : true;
+}
 
 modalPlace.addEventListener("click", () => {
     modalWrapper.classList.remove('hidden');
@@ -73,10 +98,6 @@ observer.observe(closeModal);
 
 login.addEventListener("click" , (e) => {
     e.preventDefault();
-    addValidationForUserName();
-    addValidationForEMail();
-    addValidationForPassWord();
-    // if (checkBox.checked) 
-    // document.location.href = "./register-done.html";
+    window.location.href = "./register-done.html";
 })
 
