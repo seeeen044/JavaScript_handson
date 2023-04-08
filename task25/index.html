@@ -12,7 +12,7 @@
   </head>
   <body>
     <section class="flex items-center justify-center min-h-screen">
-      <form action="post" class="w-96">
+      <form name="form" action="post" class="w-96">
         <h1 class="mb-8 text-3xl text-center">👋 Welcome!</h1>
         <div class="my-4">
           <label for="name" class="block mt-1">ユーザー名 </label>
@@ -70,7 +70,7 @@
           >
         </div>
         <div
-          class="my-8 mx-auto text-center w-52 rounded-md bg-yellow-500 p-3 login-button"
+          id="js-loginWrapper"
         >
           <button href="" id="js-login" class="text-white" disabled>ログイン</button>
         </div>

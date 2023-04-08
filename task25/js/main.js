@@ -5,10 +5,16 @@ const modalPlace = document.getElementById("js-modalPlace");
 const closeModal = document.getElementById("js-modalClose");
 const closeModalButton = document.getElementById("js-modalCloseButton");
 const checkBox = document.getElementById("js-checkBox");
+const loginWrapper = document.getElementById("js-loginWrapper");
 const login = document.getElementById("js-login");
 const name = document.getElementById("name");
 const mail = document.getElementById("mail");
 const password = document.getElementById("password");
+
+const renderClassOfLoginWrapper = () => {
+    loginWrapper.classList.add("my-8", "mx-auto", "text-center", "w-52", "rounded-md", "bg-yellow-500", "p-3", "login-button")
+}
+renderClassOfLoginWrapper();
 
 const validationStatus = {
     name : false ,
@@ -52,19 +58,34 @@ const checkEventForValid = (e) => {
     const value = target.value.trim();
     const inputValue = validations[target.id].validation(value);
     settingValidation(inputValue, target);
-    checkedAllIsValidAndInputValue();
+    CheckEmptyInputValues(target, value);
+    switchLoginButton(checkedAllIsValidAndInputValues());
+
+}
+
+const CheckEmptyInputValues = (target, value) => {
+    if(value === ""){
+        target.nextElementSibling.textContent ="入力必須項目です";
+        return;
+    }
+}
+const checkedAllIsValidAndInputValues = () => {
+    return Object.values(validationStatus).every((value) => value);
+}
+
+const switchLoginButton = (isValid) => {
+    login.disabled = isValid && checkBox.checked ? false : true;
+    isValid && changeColorOfLoginButton();
+}
+
+const changeColorOfLoginButton = () => {
+    loginWrapper.classList.remove("bg-yellow-500");
+    loginWrapper.classList.add("bg-green-600");
 }
 
 name.addEventListener("blur", checkEventForValid);
 mail.addEventListener("blur", checkEventForValid);
 password.addEventListener("blur", checkEventForValid);
-
-const checkedAllIsValidAndInputValue = () => {
-    const invalid = document.querySelectorAll(".invalid");
-    const isValidStatus = invalid.length === 0;
-    
-    login.disabled = isValidStatus && checkBox.checked ? false : true;
-}
 
 modalPlace.addEventListener("click", () => {
     modalWrapper.classList.remove('hidden');
@@ -88,13 +109,16 @@ const options = {
 
 const checkedValue = ([entry]) => {
     if(entry.isIntersecting){
-        checkBox.checked = true;
         checkBox.disabled = false;
     } 
 };
 
 const observer = new IntersectionObserver(checkedValue, options);
 observer.observe(closeModal);
+
+checkBox.addEventListener("input", () => {
+    switchLoginButton(checkedAllIsValidAndInputValues());
+})
 
 login.addEventListener("click" , (e) => {
     e.preventDefault();
