@@ -25,7 +25,7 @@ const validationStatus = {
 const validations =  {
     name : {
         maxLength : 16,
-        minLength : 2,
+        minLength : 1,
         validation : (value) => value.length > validations.name.minLength && value.length < validations.name.maxLength,
         errorMessage : "ユーザー名は2文字以上15文字以下にしてください。",
     } ,
@@ -75,7 +75,9 @@ const checkedAllIsValidAndInputValues = () => {
 
 const switchLoginButton = (isValid) => {
     login.disabled = isValid && checkBox.checked ? false : true;
-    isValid && changeColorOfLoginButton();
+    if(!login.disabled){
+        changeColorOfLoginButton();
+    }
 }
 
 const changeColorOfLoginButton = () => {
