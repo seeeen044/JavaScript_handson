@@ -59,7 +59,7 @@ const checkEventForValid = (e) => {
     const inputValue = validations[target.id].validation(value);
     settingValidation(inputValue, target);
     CheckEmptyInputValues(target, value);
-    switchLoginButton(checkedAllIsValidAndInputValues());
+    switchLoginButton(checkAllIsValid());
 
 }
 
@@ -69,7 +69,7 @@ const CheckEmptyInputValues = (target, value) => {
         return;
     }
 }
-const checkedAllIsValidAndInputValues = () => {
+const checkAllIsValid = () => {
     return Object.values(validationStatus).every((value) => value);
 }
 
@@ -119,7 +119,7 @@ const observer = new IntersectionObserver(checkedValue, options);
 observer.observe(closeModal);
 
 checkBox.addEventListener("input", () => {
-    switchLoginButton(checkedAllIsValidAndInputValues());
+    switchLoginButton(checkAllIsValid());
 })
 
 login.addEventListener("click" , (e) => {
