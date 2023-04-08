@@ -63,3 +63,15 @@
 .close-button::after {
   transform: translate(-50%,-50%) rotate(-45deg)
 }
+
+.invalid {
+  background-color: #ffdddd;
+  border: 2px solid red;
+
+}
+
+.isvalid {
+  background-color: #ddffdd;
+  border: 2px solid green;
+}
+
